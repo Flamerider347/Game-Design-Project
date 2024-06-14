@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://8jsao202inq0"]
+
+[ext_resource type="Texture2D" uid="uid://doflj4nb88wpk" path="res://icon.svg" id="1_y6sny"]
+
+[sub_resource type="GDScript" id="GDScript_vqqmj"]
+script/source = "extends CharacterBody2D
+
+var veloc: Vector2 = Vector2.ZERO
+var dir:Vector2 = Vector2.ZERO
+var speed: float = 1200.0
+var gravity: float = 1000.0
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	veloc = dir * speed
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta)-> void:
+	velocity.y += gravity * delta
+	
+	var collision = move_and_collide(veloc * delta)
+	if not collision: return
+	
+	veloc = veloc.bounce(collision.normal) * 0.6
+"
+
+[node name="godog" type="CharacterBody2D"]
+position = Vector2(855, 818)
+script = SubResource("GDScript_vqqmj")
+metadata/_edit_group_ = true
+
+[node name="godog sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_y6sny")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-63, 63, -63, -63, 63, -63, 63, 63)

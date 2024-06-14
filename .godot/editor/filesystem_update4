@@ -1,0 +1,6 @@
+res://prefabs/player.tscn
+res://scripts/Line2D.gd
+res://prefabs/godog.tscn
+res://prefabs/game.tscn
+res://prefabs/level_2.tscn
+res://prefabs/rigid_body_2d.tscn

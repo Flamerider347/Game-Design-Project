@@ -1,3 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1716516550
+::res://::1718154349
+cloud background.jpg::CompressedTexture2D::4697716978949540775::1716865662::1716865662::1::::<><>::
 icon.svg::CompressedTexture2D::8152913253198099672::1716516546::1716516551::1::::<><>::
+Screenshot 2024-03-26 171952.png::CompressedTexture2D::7891405586065759566::1716864666::1716864666::1::::<><>::
+sprite_0.png::CompressedTexture2D::1253157348255599300::1717973803::1717973803::1::::<><>::
+::res://prefabs/::1718155486
+game.tscn::PackedScene::7730826155230247247::1718155536::0::1::::<><>::uid://y708fjo4bo08::::res://prefabs/player.tscn<>uid://doflj4nb88wpk::::res://icon.svg<>uid://r4bk3d4cy885::::res://sprite_0.png<>res://scripts/new_scene_portal.gd<>uid://ccl01yg5be1du::::res://prefabs/rigid_body_2d.tscn
+godog.tscn::PackedScene::2335904923920320957::1718155485::0::1::::<><>::uid://doflj4nb88wpk::::res://icon.svg
+level_2.tscn::PackedScene::1076828449612768970::1718155485::0::1::::<><>::uid://y708fjo4bo08::::res://prefabs/player.tscn
+player.tscn::PackedScene::1752169468655609731::1718155485::0::1::::<><>::uid://dkowkdnntval7::::res://Screenshot 2024-03-26 171952.png<>res://scripts/player.gd<>res://scripts/player area.gd
+rigid_body_2d.tscn::PackedScene::4937492836611429714::1718155523::0::1::::<><>::uid://doflj4nb88wpk::::res://icon.svg
+::res://scripts/::1718154980
+new_scene_portal.gd::GDScript::-1::1717972683::0::1::::<>Area2D<>::
+player area.gd::GDScript::-1::1717972106::0::1::::player_area<>Area2D<>::
+player.gd::GDScript::-1::1717972106::0::1::::<>CharacterBody2D<>::
+Line2D.gd::GDScript::-1::1718154980::0::1::::<>Line2D<>::
+::res://sprites/::1716516829
