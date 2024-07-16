@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b76uyhof2nsx0"
-path="res://.godot/imported/cloud background.jpg-79382f660b63ac34d71d3f35998636aa.ctex"
+uid="uid://d38rlftg6apap"
+path="res://.godot/imported/l0_door switch2.png-efd6aa2590345706627ea6ded9ffa720.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cloud background.jpg"
-dest_files=["res://.godot/imported/cloud background.jpg-79382f660b63ac34d71d3f35998636aa.ctex"]
+source_file="res://sprites/l0_door switch2.png"
+dest_files=["res://.godot/imported/l0_door switch2.png-efd6aa2590345706627ea6ded9ffa720.ctex"]
 
 [params]
 

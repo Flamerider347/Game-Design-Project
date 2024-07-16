@@ -1,17 +1,34 @@
 extends Area2D
+var locked = true
+var can_enter = false
 
-
+signal level_2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	if can_enter and not locked and Input.is_action_just_pressed("both_interact"):
+		level_2.emit()
 
 
 func _on_area_entered(area):
-	if area is player_area:
-		print("It worked")
-		get_tree().change_scene_to_file("res://prefabs/level_2.tscn")
+	if area is player_area and godog_area:
+		can_enter = true
+
+
+func _on_area_exited(area):
+	if area is player_area or godog_area:
+		can_enter = false
+
+
+func _on_door_switch_flicked_on():
+	locked = false
+	$padlock_sprite.hide()
+
+
+func _on_door_switch_flicked_off():
+	locked = true
+	$padlock_sprite.show()

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfurtsngerdup"]
+
+[ext_resource type="Script" path="res://scripts/door_switch.gd" id="1_nalhv"]
+[ext_resource type="Texture2D" uid="uid://dxfvlacrjwfb6" path="res://sprites/l0_door switch1.png" id="2_ochrs"]
+[ext_resource type="Texture2D" uid="uid://d38rlftg6apap" path="res://sprites/l0_door switch2.png" id="3_f04b5"]
+[ext_resource type="Script" path="res://scripts/switch_timer.gd" id="4_dma0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gdig"]
+size = Vector2(52, 72)
+
+[node name="door_switch" type="Area2D"]
+script = ExtResource("1_nalhv")
+
+[node name="switch_off" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ochrs")
+
+[node name="switch_on" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("3_f04b5")
+
+[node name="switch_hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_6gdig")
+
+[node name="switch_timer" type="Timer" parent="."]
+script = ExtResource("4_dma0q")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="switch_timer" from="." to="switch_timer" method="_on_door_switch_switch_timer"]
+[connection signal="timeout" from="switch_timer" to="." method="_on_switch_timer_timeout"]
