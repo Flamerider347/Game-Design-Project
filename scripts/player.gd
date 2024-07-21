@@ -16,6 +16,8 @@ signal swap_timer
 signal camera_update
 
 func _physics_process(delta):
+	if controlling:
+		camera_update.emit(self.position)
 	moving(delta)
 	picking_up()
 	move_and_slide()
@@ -83,3 +85,12 @@ func _on_godog_thrown():
 
 
 #endregion
+
+
+func _on_godog_throw_charge(power):
+	if power == 0:
+		$throw_power_label.text = str(" ")
+	elif power == 100:
+		$throw_power_label.text = str("Fire!")
+	else:
+		$throw_power_label.text = str(power)

@@ -1,47 +1,27 @@
 extends Node2D
 
-var target
-var distance
-var speed = 1
-var switch_camera = false
-var camera 
-var cameras
-var other_camera
-var other_target
-# Called when the node enters the scene tree for the first time.
+var main_camera_position
+var player_camera_position
+var godog_camera_position
+var speed = 5
+
 func _ready():
-	target = get_parent().get_node("player")
-	cameras = get_tree().get_nodes_in_group("cameras")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if switch_camera:
-		if other_camera.position.x != target.position.x:
-			distance = other_camera.position.x - target.position.x 
-			if other_camera.position.x < target.position.x:
-				other_camera.position.x -= distance * speed * delta
-			else:
-				other_camera.position.x += distance * speed * delta
-		if position == target.position:
-			other_camera.enabled = false
-			camera.enabled = true
-			switch_camera = false
-#		if other_camera.position.x > target.position.x:
-#			distance = other_camera.position.x - target.position.x
-#			other_camera.position.x += distance * speed * delta
-
-
-
+	pass
+func _process(_delta):
+	pass
 func _on_player_swapped():
-	target = get_parent().get_node("godog")
-	switch_camera = true
-	camera = target.get_node("godog_camera")
-	other_target = get_parent().get_node("player")
-	other_camera = other_target.get_node("player_camera")
-
+	pass
 	
 func _on_godog_swapped():
-	target = get_parent().get_node("player")
-	switch_camera = true
-	camera = target.get_node("player_camera")
-	other_target = get_parent().get_node("godog")
-	other_camera = other_target.get_node("godog_camera")
+	pass
+
+
+func _on_player_camera_update(_player_position):
+	get_parent().get_node("player").get_node("player_camera").enabled = true
+	get_parent().get_node("godog").get_node("godog_camera").enabled = false
+	$main_camera.enabled = false
+
+func _on_godog_camera_update(_godog_position):
+	get_parent().get_node("godog").get_node("godog_camera").enabled = true
+	get_parent().get_node("player").get_node("player_camera").enabled = false
+	$main_camera.enabled = false

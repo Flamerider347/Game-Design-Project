@@ -4,3 +4,5 @@ res://prefabs/godog.tscn
 res://prefabs/door_switch.tscn
 res://prefabs/door_1.tscn
 res://scripts/main_camera.gd
+res://scripts/godog.gd
+res://scripts/player.gd

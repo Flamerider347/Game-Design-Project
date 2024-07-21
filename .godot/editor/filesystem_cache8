@@ -1,22 +1,22 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1721104907
-::res://prefabs/::1720174441
+::res://::1721540864
+::res://prefabs/::1721540845
 camera manager.gd::GDScript::-1::1720157412::0::1::::<>Node2D<>::
-door_1.tscn::PackedScene::330654285388178418::1720174441::0::1::::<><>::res://scripts/new_scene_portal.gd<>uid://cvkhro4nvn0do::::res://sprites/wood door.png<>uid://dymhn2f6q3knf::::res://sprites/image-removebg-preview (2).png
-door_switch.tscn::PackedScene::2779719541707071627::1720174441::0::1::::<><>::res://scripts/door_switch.gd<>uid://dxfvlacrjwfb6::::res://sprites/l0_door switch1.png<>uid://d38rlftg6apap::::res://sprites/l0_door switch2.png<>res://scripts/switch_timer.gd
-game.tscn::PackedScene::7730826155230247247::1720174441::0::1::::<><>::res://scripts/game.gd<>uid://r4bk3d4cy885::::res://sprites/wood floor.png<>uid://y708fjo4bo08::::res://prefabs/player.tscn<>uid://eyf3e5yncjha::::res://prefabs/door_1.tscn<>uid://8jsao202inq0::::res://prefabs/godog.tscn<>uid://bfurtsngerdup::::res://prefabs/door_switch.tscn<>res://scripts/main_camera.gd
-godog.tscn::PackedScene::2335904923920320957::1720174441::0::1::::<><>::res://scripts/godog.gd<>uid://doflj4nb88wpk::::res://sprites/icon.svg<>res://scripts/godog_area.gd<>res://scripts/velocity_timer.gd<>res://scripts/dog_swap_timer.gd
-player.tscn::PackedScene::1752169468655609731::1720174441::0::1::::<><>::res://scripts/player.gd<>res://scripts/player area.gd<>uid://dkowkdnntval7::::res://sprites/Screenshot 2024-03-26 171952.png<>res://scripts/swap_timer.gd<>uid://3ps4bu5ynvyf::::res://sprites/image-removebg-preview (1).png
-::res://scripts/::1720174403
+door_1.tscn::PackedScene::330654285388178418::1721540845::0::1::::<><>::res://scripts/door_1.gd<>uid://cvkhro4nvn0do::::res://sprites/wood door.png<>uid://dymhn2f6q3knf::::res://sprites/image-removebg-preview (2).png
+door_switch.tscn::PackedScene::2779719541707071627::1721540757::0::1::::<><>::res://scripts/door_switch.gd<>uid://dxfvlacrjwfb6::::res://sprites/l0_door switch1.png<>uid://d38rlftg6apap::::res://sprites/l0_door switch2.png<>res://scripts/switch_timer.gd
+game.tscn::PackedScene::7730826155230247247::1721540757::0::1::::<><>::res://scripts/game.gd<>uid://r4bk3d4cy885::::res://sprites/wood floor.png<>uid://y708fjo4bo08::::res://prefabs/player.tscn<>uid://eyf3e5yncjha::::res://prefabs/door_1.tscn<>uid://8jsao202inq0::::res://prefabs/godog.tscn<>uid://bfurtsngerdup::::res://prefabs/door_switch.tscn<>res://scripts/main_camera.gd
+godog.tscn::PackedScene::2335904923920320957::1721540757::0::1::::<><>::res://scripts/godog.gd<>uid://doflj4nb88wpk::::res://sprites/icon.svg<>res://scripts/godog_area.gd<>res://scripts/velocity_timer.gd<>res://scripts/dog_swap_timer.gd
+player.tscn::PackedScene::1752169468655609731::1721540757::0::1::::<><>::res://scripts/player.gd<>res://scripts/player area.gd<>uid://dkowkdnntval7::::res://sprites/Screenshot 2024-03-26 171952.png<>res://scripts/swap_timer.gd
+::res://scripts/::1721540822
 dog_swap_timer.gd::GDScript::-1::1719884511::0::1::::<>Timer<>::
+door_1.gd::GDScript::-1::1720143467::0::1::::<>Area2D<>::
 door_switch.gd::GDScript::-1::1720144510::0::1::::<>Area2D<>::
 game.gd::GDScript::-1::1720144510::0::1::::<>Node2D<>::
-godog.gd::GDScript::-1::1720144091::0::1::::godog<>CharacterBody2D<>::
+godog.gd::GDScript::-1::1721540510::0::1::::godog<>CharacterBody2D<>::
 godog_area.gd::GDScript::-1::1718676459::0::1::::godog_area<>Area2D<>::
-main_camera.gd::GDScript::-1::1720174403::0::1::::<>Node2D<>::
-new_scene_portal.gd::GDScript::-1::1720143467::0::1::::<>Area2D<>::
+main_camera.gd::GDScript::-1::1721538921::0::1::::<>Node2D<>::
 player area.gd::GDScript::-1::1718676459::0::1::::player_area<>Area2D<>::
-player.gd::GDScript::-1::1720155367::0::1::::<>CharacterBody2D<>::
+player.gd::GDScript::-1::1721540757::0::1::::<>CharacterBody2D<>::
 swap_timer.gd::GDScript::-1::1719884511::0::1::::<>Timer<>::
 switch_timer.gd::GDScript::-1::1720144511::0::1::::<>Timer<>::
 velocity_timer.gd::GDScript::-1::1719181590::0::1::::<>Timer<>::

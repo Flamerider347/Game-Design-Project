@@ -1,5 +1,6 @@
-Node2D
+Label
 Camera2D
+Node2D
 Sprite2D
 Timer
 CollisionShape2D
@@ -12,4 +13,3 @@ Line2D
 Marker2D
 CollisionPolygon2D
 Polygon2D
-ParallaxBackground
