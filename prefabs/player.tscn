@@ -28,8 +28,11 @@ script = ExtResource("4_1wpm0")
 
 [node name="player_camera" type="Camera2D" parent="."]
 enabled = false
-limit_left = -6250
+process_callback = 0
+limit_left = -6272
 limit_bottom = 1050
+limit_smoothed = true
+position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.15

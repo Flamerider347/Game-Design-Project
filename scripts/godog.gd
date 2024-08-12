@@ -63,6 +63,11 @@ func moving(_delta):
 		velocity.y += gravity * _delta
 	move_and_slide()
 
+func _on_climable_vines_godog_can_climb(climbable):
+	can_climb = climbable
+	if not can_climb:
+		climbing = false
+
 func respawning():
 	if position.y >= 1500:
 		position = player.position
@@ -70,8 +75,7 @@ func respawning():
 func throwing():
 	if charging:
 		throw_charge.emit(throw_power)
-	if not charging:
-		throw_charge.emit(0)
+
 	if Input.is_action_pressed("player_throw") and player.picked_up:
 		controlling = false
 		charging = true
@@ -89,6 +93,7 @@ func throwing():
 		can_swap = true
 		velocity = Vector2(side_force * throw_power * 0.7, -up_force * throw_power*0.9)
 		throw_power = 20
+		throw_charge.emit(0)
 		thrown.emit()
 
 	if is_thrown and is_on_floor():
@@ -100,10 +105,9 @@ func camera():
 	if controlling or is_thrown:
 		camera_update.emit(self.position)
 
-func _on_climable_vines_godog_can_climb(climbable):
-	can_climb = climbable
-	if not can_climb:
-		climbing = false
+func _on_camera_manager_godog_camera_limit(limit_left, limit_right):
+	$godog_camera.limit_left = limit_left
+	$godog_camera.limit_right = limit_right
 
 #endregion
 #region Picking up
@@ -144,3 +148,4 @@ func _on_dog_swap_timer_timeout():
 	can_swap = true
 
 #endregion
+

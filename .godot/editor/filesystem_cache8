@@ -1,17 +1,19 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1723434454
+::res://::1723503123
 export_presets.cfg::TextFile::-1::1721772123::0::1::::<><>::
-game.gdshader::Shader::-1::1723434454::0::1::::<><>::
-::res://prefabs/::1723434454
-climable_vines.tscn::PackedScene::8513822943791068396::1723434062::0::1::::<><>::res://scripts/climable_vines.gd<>uid://bw08024f83tsa::::res://sprites/vine sprite.png
-door_1.tscn::PackedScene::330654285388178418::1723434454::0::1::::<><>::res://scripts/door_1.gd<>uid://cvkhro4nvn0do::::res://sprites/wood door.png<>uid://dymhn2f6q3knf::::res://sprites/lock.png
-door_switch.tscn::PackedScene::2779719541707071627::1723432800::0::1::::<><>::res://scripts/door_switch.gd<>uid://dxfvlacrjwfb6::::res://sprites/l0_door switch1.png<>uid://d38rlftg6apap::::res://sprites/l0_door switch2.png<>res://scripts/switch_timer.gd
-enemy.tscn::PackedScene::2396107968831499259::1723432800::0::1::::<><>::res://scripts/enemy.gd<>uid://bcrbkp64t8spf::::res://sprites/enemy_placeholder0.png
-game.tscn::PackedScene::7730826155230247247::1723434176::0::1::::<><>::res://scripts/game.gd<>uid://r4bk3d4cy885::::res://sprites/wood floor.png<>uid://y708fjo4bo08::::res://prefabs/player.tscn<>uid://eyf3e5yncjha::::res://prefabs/door_1.tscn<>uid://8jsao202inq0::::res://prefabs/godog.tscn<>uid://ciuxlgbmq1c2f::::res://sprites/Enemies2.png<>uid://bwg327hbgsp8v::::res://sprites/brick0.png<>uid://bfurtsngerdup::::res://prefabs/door_switch.tscn<>uid://dtkfojrv78snc::::res://prefabs/climable_vines.tscn<>res://scripts/breakable_wall2.gd<>res://scripts/main_camera.gd<>res://scripts/breakable_wall.gd<>uid://baexsvxkribe6::::res://prefabs/enemy.tscn<>res://scripts/tutorial_door.gd<>uid://cvkhro4nvn0do::::res://sprites/wood door.png<>res://game.gdshader<>uid://dagxcy8ceugj7::::res://sprites/Animated line texture.png<>res://scripts/Line2Dtest.gd
-godog.tscn::PackedScene::2335904923920320957::1723432800::0::1::::<><>::res://scripts/godog.gd<>uid://doflj4nb88wpk::::res://sprites/icon.svg<>res://scripts/godog_area.gd<>res://scripts/dog_swap_timer.gd
-player.tscn::PackedScene::1752169468655609731::1723434074::0::1::::<><>::res://scripts/player.gd<>res://scripts/player area.gd<>uid://4buj3ss2efas::::res://sprites/Gojo sprite.png<>res://scripts/swap_timer.gd
+game.gdshader::Shader::-1::1723503123::0::1::::<><>::
+::res://prefabs/::1723503123
+climable_vines.tscn::PackedScene::8513822943791068396::1723503123::0::1::::<><>::res://scripts/climable_vines.gd<>uid://bw08024f83tsa::::res://sprites/vine sprite.png
+door_1.tscn::PackedScene::330654285388178418::1723503122::0::1::::<><>::res://scripts/door_1.gd<>uid://cvkhro4nvn0do::::res://sprites/wood door.png<>uid://dymhn2f6q3knf::::res://sprites/lock.png
+door_switch.tscn::PackedScene::2779719541707071627::1723503122::0::1::::<><>::res://scripts/door_switch.gd<>uid://dxfvlacrjwfb6::::res://sprites/l0_door switch1.png<>uid://d38rlftg6apap::::res://sprites/l0_door switch2.png<>res://scripts/switch_timer.gd
+enemy.tscn::PackedScene::2396107968831499259::1723503122::0::1::::<><>::res://scripts/enemy.gd<>uid://bcrbkp64t8spf::::res://sprites/enemy_placeholder0.png
+game.tscn::PackedScene::7730826155230247247::1723503122::0::1::::<><>::res://scripts/game.gd<>uid://r4bk3d4cy885::::res://sprites/wood floor.png<>uid://y708fjo4bo08::::res://prefabs/player.tscn<>uid://eyf3e5yncjha::::res://prefabs/door_1.tscn<>uid://8jsao202inq0::::res://prefabs/godog.tscn<>uid://ciuxlgbmq1c2f::::res://sprites/Enemies2.png<>uid://bwg327hbgsp8v::::res://sprites/brick0.png<>uid://bfurtsngerdup::::res://prefabs/door_switch.tscn<>res://prefabs/secret_wall.gd<>uid://4buj3ss2efas::::res://sprites/Gojo sprite.png<>uid://dtkfojrv78snc::::res://prefabs/climable_vines.tscn<>res://scripts/breakable_wall2.gd<>res://scripts/main_camera.gd<>res://scripts/breakable_wall.gd<>uid://doflj4nb88wpk::::res://sprites/icon.svg<>uid://baexsvxkribe6::::res://prefabs/enemy.tscn<>res://scripts/tutorial_door.gd<>uid://cvkhro4nvn0do::::res://sprites/wood door.png<>res://scripts/vent_camera_changer.gd<>res://prefabs/vent_camera_changer2.gd<>res://game.gdshader<>uid://d2vlefge12pvy::::res://sprites/Animated line red.png<>res://scripts/Line2Dtest.gd
+godog.tscn::PackedScene::2335904923920320957::1723503122::0::1::::<><>::res://scripts/godog.gd<>uid://doflj4nb88wpk::::res://sprites/icon.svg<>res://scripts/godog_area.gd<>res://scripts/dog_swap_timer.gd
+player.tscn::PackedScene::1752169468655609731::1723503122::0::1::::<><>::res://scripts/player.gd<>res://scripts/player area.gd<>uid://4buj3ss2efas::::res://sprites/Gojo sprite.png<>res://scripts/swap_timer.gd
+secret_wall.gd::GDScript::-1::1723503122::0::1::::<>Area2D<>::
+vent_camera_changer2.gd::GDScript::-1::1723501459::0::1::::<>Area2D<>::
 respawn_screen.tscn::PackedScene::7673998987887948888::1722477697::0::1::::<><>::res://scripts/respawn_button.gd
-::res://scripts/::1723434146
+::res://scripts/::1723501459
 breakable_wall2.gd::GDScript::-1::1723167201::0::1::::<>Area2D<>::
 breakable_wall.gd::GDScript::-1::1723167234::0::1::::<>Area2D<>::
 camera manager.gd::GDScript::-1::1720157412::0::1::::<>Node2D<>::
@@ -21,17 +23,19 @@ door_1.gd::GDScript::-1::1720143467::0::1::::<>Area2D<>::
 door_switch.gd::GDScript::-1::1720144510::0::1::::<>Area2D<>::
 enemy.gd::GDScript::-1::1722372038::0::1::::<>Area2D<>::
 game.gd::GDScript::-1::1722479796::0::1::::<>Node2D<>::
-godog.gd::GDScript::-1::1723430681::0::1::::godog<>CharacterBody2D<>::
+godog.gd::GDScript::-1::1723500493::0::1::::godog<>CharacterBody2D<>::
 godog_area.gd::GDScript::-1::1718676459::0::1::::godog_area<>Area2D<>::
 Line2D.gd::GDScript::-1::1723151393::0::1::::<>Line2D<>::
-Line2Dtest.gd::GDScript::-1::1723432800::0::1::::<>Line2D<>::
-main_camera.gd::GDScript::-1::1721770396::0::1::::<>Node2D<>::
+Line2Dtest.gd::GDScript::-1::1723497015::0::1::::<>Line2D<>::
+main_camera.gd::GDScript::-1::1723501161::0::1::::<>Node2D<>::
 player area.gd::GDScript::-1::1723430965::0::1::::player_area<>Area2D<>::
 player.gd::GDScript::-1::1723432754::0::1::::player_main<>CharacterBody2D<>::
+vent_camera_changer.gd::GDScript::-1::1723501459::0::1::::<>Area2D<>::
 swap_timer.gd::GDScript::-1::1723428318::0::1::::<>Timer<>::
 switch_timer.gd::GDScript::-1::1720144511::0::1::::<>Timer<>::
 tutorial_door.gd::GDScript::-1::1722824533::0::1::::<>Area2D<>::
-::res://sprites/::1723434454
+::res://sprites/::1723504194
+Animated line red.png::CompressedTexture2D::9098388064340626454::1723495702::1723495702::1::::<><>::
 Animated line texture.png::CompressedTexture2D::7173049691661059018::1723422683::1723422683::1::::<><>::
 arrow.png::CompressedTexture2D::77612109277182423::1722903580::1723419199::1::::<><>::
 brick0.png::CompressedTexture2D::3944711494102080259::1722287352::1722287352::1::::<><>::
@@ -45,6 +49,7 @@ l0_door switch1.png::CompressedTexture2D::8785222047980305077::1719885798::17198
 l0_door switch2.png::CompressedTexture2D::9193726263720257211::1719885794::1719885804::1::::<><>::
 lock.png::CompressedTexture2D::8869016492996394599::1720055270::1723434455::1::::<><>::
 placeholder_sky.png::CompressedTexture2D::2598260007982717103::1722479613::1722479614::1::::<><>::
+star1.png::CompressedTexture2D::6037366950950111139::1723504194::1723504195::1::::<><>::
 vine sprite.png::CompressedTexture2D::3984234456392404864::1722824848::1723434063::1::::<><>::
 wood door.png::CompressedTexture2D::6267907019516722032::1718676589::1718676625::1::::<><>::
 wood floor.png::CompressedTexture2D::1253157348255599300::1717973803::1718947077::1::::<><>::
