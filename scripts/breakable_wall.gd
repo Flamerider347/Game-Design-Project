@@ -1,4 +1,4 @@
-extends Timer
+extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,5 +10,9 @@ func _ready():
 func _process(_delta):
 	pass
 
-func _on_godog_velocity_timer():
-	start(0.1)
+
+func _on_area_entered(area):
+	if area is godog_area:
+		$breakable_wall_hitbox.position.y += 1000
+		$window_tilemap.position.y += 1000
+		

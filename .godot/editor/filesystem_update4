@@ -1,8 +1,6 @@
-res://prefabs/game.tscn
+res://prefabs/climable_vines.tscn
+res://scripts/game.gdshader
 res://prefabs/player.tscn
-res://prefabs/godog.tscn
-res://prefabs/door_switch.tscn
+res://prefabs/game.tscn
+res://game.gdshader
 res://prefabs/door_1.tscn
-res://scripts/main_camera.gd
-res://scripts/godog.gd
-res://scripts/player.gd

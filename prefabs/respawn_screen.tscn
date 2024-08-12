@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhllv3k413f6g"]
+
+[ext_resource type="Script" path="res://scripts/respawn_button.gd" id="1_djk4f"]
+
+[node name="respawn_screen" type="Node2D"]
+
+[node name="respawn_button" type="Button" parent="."]
+offset_left = 942.0
+offset_top = 509.0
+offset_right = 1020.0
+offset_bottom = 540.0
+text = "Respawn"
+script = ExtResource("1_djk4f")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_right = 449.0
+offset_bottom = 231.0
+text = "Contols:
+
+WASD
+Space: Jump
+X: Swap
+E: interact
+Q: Pick up/Put down/Cancel throw
+Left click (hold): charge up throw when picked up"
+
+[connection signal="pressed" from="respawn_button" to="respawn_button" method="_on_pressed"]

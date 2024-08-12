@@ -11,9 +11,5 @@ func _process(_delta):
 	pass
 
 
-func _on_player_swap_timer():
-	start(0.1)
-
-
 func _on_timeout():
 	stop()

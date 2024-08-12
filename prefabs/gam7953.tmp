@@ -1,0 +1,220 @@
+[gd_scene load_steps=19 format=3 uid="uid://die4tvl02v2ql"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_wsx4g"]
+[ext_resource type="Texture2D" uid="uid://r4bk3d4cy885" path="res://sprites/wood floor.png" id="2_ig3cc"]
+[ext_resource type="PackedScene" uid="uid://y708fjo4bo08" path="res://prefabs/player.tscn" id="2_l41cj"]
+[ext_resource type="PackedScene" uid="uid://eyf3e5yncjha" path="res://prefabs/door_1.tscn" id="3_3xygc"]
+[ext_resource type="PackedScene" uid="uid://8jsao202inq0" path="res://prefabs/godog.tscn" id="4_3bj5p"]
+[ext_resource type="Texture2D" uid="uid://ciuxlgbmq1c2f" path="res://sprites/Enemies2.png" id="4_pe4g0"]
+[ext_resource type="Texture2D" uid="uid://bwg327hbgsp8v" path="res://sprites/brick0.png" id="5_6h7eu"]
+[ext_resource type="Script" path="res://scripts/tutorial_spike_trap.gd" id="5_c3ol3"]
+[ext_resource type="PackedScene" uid="uid://bfurtsngerdup" path="res://prefabs/door_switch.tscn" id="5_e28gp"]
+[ext_resource type="Script" path="res://scripts/main_camera.gd" id="7_hawjq"]
+[ext_resource type="Script" path="res://scripts/breakable_wall.gd" id="7_j1j8a"]
+[ext_resource type="PackedScene" uid="uid://baexsvxkribe6" path="res://prefabs/enemy.tscn" id="8_t6ncc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t1c4q"]
+texture = ExtResource("2_ig3cc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuxas"]
+texture = ExtResource("4_pe4g0")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukie6"]
+texture = ExtResource("5_6h7eu")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_q6oo2"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 255
+physics_layer_0/collision_mask = 255
+sources/0 = SubResource("TileSetAtlasSource_t1c4q")
+sources/1 = SubResource("TileSetAtlasSource_yuxas")
+sources/3 = SubResource("TileSetAtlasSource_ukie6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsrhj"]
+size = Vector2(574, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykqj7"]
+size = Vector2(1922, 126)
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_wsx4g")
+
+[node name="camera manager" type="Node2D" parent="."]
+script = ExtResource("7_hawjq")
+
+[node name="tutorial" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="tutorial"]
+position = Vector2(-5667.6, 814)
+tile_set = SubResource("TileSet_q6oo2")
+format = 2
+layer_0/tile_data = PackedInt32Array(131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 131080, 0, 0, 196616, 0, 0, 262152, 0, 0, 327688, 0, 0, 393224, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 393230, 0, 0, 327694, 0, 0, 262158, 0, 0, 196622, 0, 0, 131086, 0, 0, 65550, 0, 0, 65551, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 65555, 0, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0)
+
+[node name="tutorial_spike_trap" type="Area2D" parent="tutorial"]
+script = ExtResource("5_c3ol3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tutorial/tutorial_spike_trap"]
+position = Vector2(-2731.6, -86)
+polygon = PackedVector2Array(-2360, 1348, -2349, 1302, -2055, 1305, -2040, 1348)
+
+[node name="breakable_wall" type="Area2D" parent="tutorial"]
+script = ExtResource("7_j1j8a")
+
+[node name="brick_wall_tilemap" type="TileMap" parent="tutorial/breakable_wall"]
+position = Vector2(-5667.6, 814)
+tile_set = SubResource("TileSet_q6oo2")
+format = 2
+layer_0/tile_data = PackedInt32Array(-262126, 3, 0, -327662, 3, 0, -393198, 3, 0, -458734, 3, 0, -524270, 3, 0)
+
+[node name="breakable_wall_hitbox" type="CollisionPolygon2D" parent="tutorial/breakable_wall"]
+polygon = PackedVector2Array(-4516, 302, -4516, 622, -4387, 622, -4387, 302)
+
+[node name="Label" type="Label" parent="tutorial"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="level_1" type="Node2D" parent="."]
+position = Vector2(4664, 1055)
+
+[node name="Label" type="Label" parent="level_1"]
+offset_left = -4657.0
+offset_top = -690.0
+offset_right = -4278.0
+offset_bottom = -485.0
+text = "Contols:
+
+AD/ARROWS
+Space: Jump
+X/Shift: Swap
+C/E: interact
+Z/Q: Pick up/Put down/Cancel throw
+Left click (hold): charge up throw when picked up"
+
+[node name="enemy" parent="level_1" instance=ExtResource("8_t6ncc")]
+position = Vector2(-3634, -488)
+rotation = -1.5708
+
+[node name="lever_platform" type="StaticBody2D" parent="level_1"]
+position = Vector2(-3634, -488)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_1/lever_platform"]
+shape = SubResource("RectangleShape2D_qsrhj")
+
+[node name="Sprite2D" type="Sprite2D" parent="level_1/lever_platform"]
+scale = Vector2(8.96875, 1.09375)
+texture = ExtResource("2_ig3cc")
+
+[node name="floor" type="StaticBody2D" parent="level_1"]
+position = Vector2(-4599, -45)
+
+[node name="Sprite2D" type="Sprite2D" parent="level_1/floor"]
+position = Vector2(898.5, 2.99994)
+scale = Vector2(30.0469, 2.0625)
+texture = ExtResource("2_ig3cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_1/floor"]
+position = Vector2(898, 0)
+shape = SubResource("RectangleShape2D_ykqj7")
+
+[node name="door_switch" parent="level_1" instance=ExtResource("5_e28gp")]
+position = Vector2(-3633, -579)
+
+[node name="door_1" parent="level_1" instance=ExtResource("3_3xygc")]
+position = Vector2(-2804, -236)
+
+[node name="floor2" type="StaticBody2D" parent="level_1"]
+position = Vector2(-4726, -1840)
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="level_1/floor2"]
+position = Vector2(898.5, 2.99994)
+scale = Vector2(30.0469, 2.0625)
+texture = ExtResource("2_ig3cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_1/floor2"]
+position = Vector2(898, 0)
+shape = SubResource("RectangleShape2D_ykqj7")
+
+[node name="floor3" type="StaticBody2D" parent="level_1"]
+position = Vector2(-2677, -45)
+rotation = -1.5708
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="level_1/floor3"]
+position = Vector2(898.5, 2.99994)
+scale = Vector2(30.0469, 2.0625)
+texture = ExtResource("2_ig3cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_1/floor3"]
+position = Vector2(898, 0)
+shape = SubResource("RectangleShape2D_ykqj7")
+
+[node name="level_2" type="Node2D" parent="."]
+
+[node name="enemy2" parent="level_2" instance=ExtResource("8_t6ncc")]
+position = Vector2(4662, 1000)
+rotation = -1.5708
+scale = Vector2(2, 2)
+
+[node name="floor_2" type="StaticBody2D" parent="level_2"]
+position = Vector2(4662, 1000)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_2/floor_2"]
+shape = SubResource("RectangleShape2D_qsrhj")
+
+[node name="Sprite2D" type="Sprite2D" parent="level_2/floor_2"]
+scale = Vector2(8.96875, 1.09375)
+texture = ExtResource("2_ig3cc")
+
+[node name="Label" type="Label" parent="level_2"]
+offset_left = 4485.0
+offset_top = 610.0
+offset_right = 4867.0
+offset_bottom = 711.0
+text = "CONGRATS YOU WIN WOW YOU'RE REALLY GOOD
+
+Please leave some feedback
+all the sprites are placeholders :)"
+
+[node name="player" parent="." instance=ExtResource("2_l41cj")]
+position = Vector2(-5926.6, 768)
+
+[node name="godog" parent="." instance=ExtResource("4_3bj5p")]
+position = Vector2(-5685.6, 824)
+
+[connection signal="area_entered" from="tutorial/tutorial_spike_trap" to="tutorial/tutorial_spike_trap" method="_on_area_entered"]
+[connection signal="respawn" from="tutorial/tutorial_spike_trap" to="." method="_on_tutorial_spike_trap_respawn"]
+[connection signal="area_entered" from="tutorial/breakable_wall" to="tutorial/breakable_wall" method="_on_area_entered"]
+[connection signal="respawn" from="level_1/enemy" to="." method="_on_enemy_respawn"]
+[connection signal="flicked_off" from="level_1/door_switch" to="level_1/enemy" method="_on_door_switch_flicked_off"]
+[connection signal="flicked_off" from="level_1/door_switch" to="level_1/door_1" method="_on_door_switch_flicked_off"]
+[connection signal="flicked_on" from="level_1/door_switch" to="level_1/enemy" method="_on_door_switch_flicked_on"]
+[connection signal="flicked_on" from="level_1/door_switch" to="level_1/door_1" method="_on_door_switch_flicked_on"]
+[connection signal="level_2" from="level_1/door_1" to="." method="_on_door_1_level_2"]
+[connection signal="camera_update" from="player" to="camera manager" method="_on_player_camera_update"]
+[connection signal="dropped" from="player" to="godog" method="_on_player_dropped"]
+[connection signal="pick_up" from="player" to="godog" method="_on_player_pick_up"]
+[connection signal="swapped" from="player" to="camera manager" method="_on_player_swapped"]
+[connection signal="swapped" from="player" to="godog" method="_on_player_swapped"]
+[connection signal="camera_update" from="godog" to="camera manager" method="_on_godog_camera_update"]
+[connection signal="swapped" from="godog" to="camera manager" method="_on_godog_swapped"]
+[connection signal="swapped" from="godog" to="player" method="_on_godog_swapped"]
+[connection signal="throw_charge" from="godog" to="player" method="_on_godog_throw_charge"]
+[connection signal="thrown" from="godog" to="player" method="_on_godog_thrown"]
+[connection signal="update_position" from="godog" to="player" method="_on_godog_update_position"]

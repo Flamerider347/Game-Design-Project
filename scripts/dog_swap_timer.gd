@@ -10,10 +10,5 @@ func _ready():
 func _process(_delta):
 	pass
 
-
-func _on_godog_dog_swap_timer():
-	start(0.1)
-
-
 func _on_timeout():
 	stop()

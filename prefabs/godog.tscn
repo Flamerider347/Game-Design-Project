@@ -1,16 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://8jsao202inq0"]
+[gd_scene load_steps=7 format=3 uid="uid://8jsao202inq0"]
 
 [ext_resource type="Script" path="res://scripts/godog.gd" id="1_6rqng"]
 [ext_resource type="Texture2D" uid="uid://doflj4nb88wpk" path="res://sprites/icon.svg" id="2_1ipto"]
 [ext_resource type="Script" path="res://scripts/godog_area.gd" id="3_myry5"]
-[ext_resource type="Script" path="res://scripts/velocity_timer.gd" id="4_wnbd0"]
 [ext_resource type="Script" path="res://scripts/dog_swap_timer.gd" id="5_x0g4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h16vl"]
 size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84l28"]
-size = Vector2(114, 64)
+size = Vector2(72, 64)
 
 [node name="godog" type="CharacterBody2D"]
 collision_layer = 4
@@ -31,20 +30,15 @@ script = ExtResource("3_myry5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="godog_area"]
 shape = SubResource("RectangleShape2D_84l28")
 
-[node name="velocity_timer" type="Timer" parent="."]
-script = ExtResource("4_wnbd0")
-
 [node name="dog_swap_timer" type="Timer" parent="."]
 script = ExtResource("5_x0g4n")
 
 [node name="godog_camera" type="Camera2D" parent="."]
 enabled = false
+limit_left = -6250
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.15
 
-[connection signal="dog_swap_timer" from="." to="dog_swap_timer" method="_on_godog_dog_swap_timer"]
-[connection signal="velocity_timer" from="." to="velocity_timer" method="_on_godog_velocity_timer"]
-[connection signal="timeout" from="velocity_timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dog_swap_timer" to="." method="_on_dog_swap_timer_timeout"]
 [connection signal="timeout" from="dog_swap_timer" to="dog_swap_timer" method="_on_timeout"]
