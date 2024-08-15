@@ -6,7 +6,7 @@ var godog_camera_position
 var speed = 5
 
 signal godog_camera_limit
-
+signal player_camera_limit
 func _on_player_swapped():
 	pass
 	
@@ -25,5 +25,8 @@ func _on_godog_camera_update(_godog_position):
 	
 
 
-func _on_vent_camera_changer_camera_limit(cam_limit_left,cam_limit_right):
-	godog_camera_limit.emit(cam_limit_left, cam_limit_right)
+func _on_vent_camera_changer_camera_limit(cam_limit_left,cam_limit_right,player_type):
+	if player_type == "godog":
+		godog_camera_limit.emit(cam_limit_left, cam_limit_right)
+	elif player_type == "player":
+		player_camera_limit.emit(cam_limit_left,cam_limit_right)

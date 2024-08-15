@@ -12,6 +12,5 @@ func _process(_delta):
 
 
 func _on_area_entered(area):
-	if area is godog_area:
-		get_parent().get_parent().get_node("godog").position = Vector2(-6000,30)
+	pass
 

@@ -26,7 +26,7 @@ signal thrown
 signal camera_update
 signal throw_charge
 
-@onready var player = get_parent().get_node("player")
+@onready var player_var = get_parent().get_node("player")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
@@ -46,14 +46,14 @@ func _physics_process(delta):
 #region Movement, Respawning, Throwing & Camera 
 func moving(_delta):
 	if controlling:
-		if Input.is_action_pressed("ui_accept") and is_on_floor():
+		if Input.is_action_pressed("player_jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		if Input.is_action_pressed("player_left"):
 			position.x -= SPEED
 		if Input.is_action_pressed("player_right"):
 			position.x += SPEED
 		if can_climb:
-			if Input.is_action_pressed("ui_accept"):
+			if Input.is_action_pressed("player_jump"):
 				climbing = true
 				position.y -= SPEED
 				velocity = Vector2.ZERO
@@ -70,13 +70,13 @@ func _on_climable_vines_godog_can_climb(climbable):
 
 func respawning():
 	if position.y >= 1500:
-		position = player.position
+		position = player_var.position
 
 func throwing():
 	if charging:
 		throw_charge.emit(throw_power)
 
-	if Input.is_action_pressed("player_throw") and player.picked_up:
+	if Input.is_action_pressed("player_throw") and player_var.picked_up:
 		controlling = false
 		charging = true
 		if throw_power > 100:
@@ -91,7 +91,7 @@ func throwing():
 		position_update = false
 		apply_gravity = true
 		can_swap = true
-		velocity = Vector2(side_force * throw_power * 0.7, -up_force * throw_power*0.9)
+		velocity = Vector2(side_force * throw_power * 0.7 * player_var.direction, -up_force * throw_power*0.9)
 		throw_power = 20
 		throw_charge.emit(0)
 		thrown.emit()
@@ -116,12 +116,15 @@ func emit_position_update():
 		update_position.emit()
 		is_disabled = true
 
-func _on_player_pick_up(player_position):
+func _on_player_pick_up(player_position, direction):
 	controlling = false
 	position_update = true
 	apply_gravity = false
 	can_swap = false
-	position = Vector2(player_position.x+60, player_position.y+60)
+	if direction == 1:
+		position = Vector2(player_position.x+60, player_position.y+60)
+	if direction == -1:
+		position = Vector2(player_position.x-60, player_position.y+60)
 
 func _on_player_dropped():
 	position_update = false

@@ -13,6 +13,6 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if area is godog_area:
-		$breakable_wall_hitbox.position.y += 1000
-		$window_tilemap.position.y += 1000
+		$breakable_wall_hitbox.position.y += 2000
+		$window_tilemap.position.y += 2000
 		

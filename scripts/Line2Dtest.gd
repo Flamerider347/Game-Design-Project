@@ -9,16 +9,16 @@ func _process(delta):
 	if Input.is_action_pressed("player_throw") and player_var.picked_up:
 		position = godog_var.position
 		var speed = godog_var.throw_power
-		update_trajectory(Vector2(speed*1.4,-speed*1.8),2,160, delta)
+		update_trajectory(Vector2(speed*0.7 *player_var.direction,-speed*0.9),2,40, delta)
 	if Input.is_action_just_released("player_throw"):
 		clear_points()
 
 
 func update_trajectory(dir: Vector2, speed: float, gravity: float, delta : float) -> void:
-	clear_points()
-	var max_points = 6 * godog_var.throw_power
+	var max_points = 8 * godog_var.throw_power
 	var pos: Vector2 = Vector2.ZERO
 	var vel =  dir * speed
+	clear_points()
 	for i in max_points:
 		add_point(pos)
 		vel.y += gravity * delta
