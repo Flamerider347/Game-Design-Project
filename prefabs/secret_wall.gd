@@ -7,7 +7,7 @@ func _process(_delta):
 func _on_area_entered(_area):
 	position_changing = true
 	$firework_node/firework.emitting = true
-	$TileMap2.visible = false
+	$secret_wall_tilemap.visible = false
 	$godog.visible = true
 	$gojo.visible = true
 	$secret_text.visible = true

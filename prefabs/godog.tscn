@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://8jsao202inq0"]
+[gd_scene load_steps=10 format=3 uid="uid://8jsao202inq0"]
 
 [ext_resource type="Script" path="res://scripts/godog.gd" id="1_6rqng"]
 [ext_resource type="Texture2D" uid="uid://doflj4nb88wpk" path="res://sprites/icon.svg" id="2_1ipto"]
+[ext_resource type="Texture2D" uid="uid://ktkthskc7y14" path="res://sprites/godot_light_orb.jpg" id="2_8acgi"]
+[ext_resource type="Texture2D" uid="uid://daro2p6v8tl4l" path="res://sprites/image-removebg-preview (3).png" id="3_aptvq"]
 [ext_resource type="Script" path="res://scripts/godog_area.gd" id="3_myry5"]
+[ext_resource type="Texture2D" uid="uid://bt8008wkv6cv0" path="res://sprites/godot_cone_test.png" id="5_207pb"]
 [ext_resource type="Script" path="res://scripts/dog_swap_timer.gd" id="5_x0g4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h16vl"]
@@ -14,6 +17,34 @@ size = Vector2(72, 64)
 [node name="godog" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_6rqng")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.2
+shadow_enabled = true
+texture = ExtResource("2_8acgi")
+texture_scale = 4.0
+
+[node name="flashlight" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -36)
+
+[node name="PointLight2D" type="PointLight2D" parent="flashlight"]
+position = Vector2(18, 0)
+scale = Vector2(3, 3)
+shadow_enabled = true
+shadow_color = Color(0.624193, 0.195454, 0.0956287, 0)
+shadow_filter_smooth = 1.5
+texture = ExtResource("5_207pb")
+offset = Vector2(92, 2)
+
+[node name="Sprite2D2" type="Sprite2D" parent="flashlight"]
+position = Vector2(27, -5)
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_aptvq")
+flip_h = true
+
+[node name="flashlight_timer" type="Timer" parent="flashlight"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9.53674e-07, 9.53674e-07)
@@ -43,7 +74,9 @@ limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_top_margin = 0.15
+drag_top_margin = 0.8
 
+[connection signal="flashlight" from="." to="flashlight" method="_on_godog_flashlight"]
+[connection signal="timeout" from="flashlight/flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
 [connection signal="timeout" from="dog_swap_timer" to="." method="_on_dog_swap_timer_timeout"]
 [connection signal="timeout" from="dog_swap_timer" to="dog_swap_timer" method="_on_timeout"]

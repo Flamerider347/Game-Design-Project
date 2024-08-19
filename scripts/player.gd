@@ -2,7 +2,7 @@ extends CharacterBody2D
 #region Variables + Signals
 class_name player_main
 const SPEED = 6
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 var gravity = 980
 var interact_cooldown = 0
 @export var direction = 1
@@ -110,4 +110,3 @@ func _on_godog_throw_charge(power):
 	else:
 		$throw_power_label.text = str(round(power))
 #endregion
-

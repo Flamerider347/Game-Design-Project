@@ -25,4 +25,3 @@ func _on_area_exited(area):
 		godog_can_climb.emit(false)
 	if area is player_area:
 		player_can_climb.emit(false)
-

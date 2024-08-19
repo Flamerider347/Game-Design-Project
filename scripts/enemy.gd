@@ -1,7 +1,8 @@
 extends Area2D
-var rotation_speed = 1
+var speed = 2
 var helicopter = true
-
+var direction = 1
+var move = "down"
 signal respawn
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +12,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if helicopter:
-		rotation_degrees += rotation_speed
+		position.y += speed*direction
+		if position.y < 92:
+			direction = 1
+		if position.y > 930:
+			direction = -1
 	if not helicopter:
 		rotation_degrees = 0
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://die4tvl02v2ql"]
+[gd_scene load_steps=53 format=4 uid="uid://die4tvl02v2ql"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_wsx4g"]
 [ext_resource type="Texture2D" uid="uid://r4bk3d4cy885" path="res://sprites/wood floor.png" id="2_ig3cc"]
 [ext_resource type="PackedScene" uid="uid://y708fjo4bo08" path="res://prefabs/player.tscn" id="2_l41cj"]
+[ext_resource type="Texture2D" uid="uid://c5bhwasgsdqkh" path="res://sprites/stone-wall-from-bricks-rock-game-background-in-cartoon-style-seamless-textured-surface-ui-game-asset-road-or-floor-material-illustration-vector.jpg" id="2_rl143"]
 [ext_resource type="PackedScene" uid="uid://eyf3e5yncjha" path="res://prefabs/door_1.tscn" id="3_3xygc"]
 [ext_resource type="PackedScene" uid="uid://8jsao202inq0" path="res://prefabs/godog.tscn" id="4_3bj5p"]
 [ext_resource type="Texture2D" uid="uid://ciuxlgbmq1c2f" path="res://sprites/Enemies2.png" id="4_pe4g0"]
@@ -22,7 +23,41 @@
 [ext_resource type="Shader" path="res://game.gdshader" id="15_24ac7"]
 [ext_resource type="Texture2D" uid="uid://d2vlefge12pvy" path="res://sprites/Animated line red.png" id="16_ktidu"]
 [ext_resource type="Script" path="res://scripts/Line2Dtest.gd" id="17_oqeki"]
+[ext_resource type="Script" path="res://scripts/door_pressure_plate.gd" id="17_rmoqd"]
+[ext_resource type="Texture2D" uid="uid://bt8008wkv6cv0" path="res://sprites/godot_cone_test.png" id="20_8pics"]
+[ext_resource type="Texture2D" uid="uid://b341yvir5bp07" path="res://sprite_0.png" id="21_grvwc"]
+[ext_resource type="Texture2D" uid="uid://ktkthskc7y14" path="res://sprites/godot_light_orb.jpg" id="23_yy7fr"]
 [ext_resource type="PackedScene" uid="uid://ctflrpqufcpvp" path="res://prefabs/firework_node.tscn" id="24_h2ra1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuxas"]
+texture = ExtResource("4_pe4g0")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qsc65"]
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmayc"]
+texture = ExtResource("2_ig3cc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_qsc65")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukie6"]
+texture = ExtResource("5_6h7eu")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_q6oo2"]
+tile_size = Vector2i(64, 64)
+occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_yuxas")
+sources/3 = SubResource("TileSetAtlasSource_ukie6")
+sources/2 = SubResource("TileSetAtlasSource_hmayc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_riatx"]
 texture = ExtResource("2_ig3cc")
@@ -34,38 +69,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_riatx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnx4f"]
-size = Vector2(1280, 192)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuxas"]
-texture = ExtResource("4_pe4g0")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmayc"]
-texture = ExtResource("2_ig3cc")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukie6"]
-texture = ExtResource("5_6h7eu")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="TileSet" id="TileSet_q6oo2"]
-tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 255
-physics_layer_0/collision_mask = 255
-sources/1 = SubResource("TileSetAtlasSource_yuxas")
-sources/3 = SubResource("TileSetAtlasSource_ukie6")
-sources/2 = SubResource("TileSetAtlasSource_hmayc")
+size = Vector2(829, 192)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qlnba"]
 texture = ExtResource("5_6h7eu")
@@ -80,8 +84,6 @@ sources/0 = SubResource("TileSetAtlasSource_qlnba")
 texture = ExtResource("5_6h7eu")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSet" id="TileSet_7yv4g"]
@@ -107,12 +109,22 @@ size = Vector2(11.4806, 1214)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wm6gs"]
 size = Vector2(15.9715, 1213.63)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jiiip"]
+polygon = PackedVector2Array(-4160, 511.333, -4096, 511.333, -4096, 640, -4160.67, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6x3k"]
+size = Vector2(128.5, 7)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_286cd"]
+load_path = "res://.godot/imported/sprite_0.png-799cc71c76b019a02978712956f937be.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xyqxw"]
+load_path = "res://.godot/imported/godot_light_orb.jpg-5caf1370f05944b93589db1543e5a767.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j7sjq"]
 texture = ExtResource("2_ig3cc")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSet" id="TileSet_b8f73"]
@@ -133,23 +145,50 @@ point_count = 2
 [node name="game" type="Node2D"]
 script = ExtResource("1_wsx4g")
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(478, 480)
+repeat_times = 15
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-5864, 586)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rl143")
+centered = false
+
 [node name="camera manager" type="Node2D" parent="."]
 script = ExtResource("7_hawjq")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_limit_begin = Vector2(-6000, 0)
-scroll_limit_end = Vector2(10000, 0)
-scroll_ignore_camera_zoom = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(1750, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(13.6328, 8.09)
-centered = false
-
 [node name="tutorial" type="Node2D" parent="."]
+
+[node name="enemy" parent="tutorial" instance=ExtResource("8_t6ncc")]
+position = Vector2(-6579, 94)
+
+[node name="tutorial_tilemap" type="TileMapLayer" parent="tutorial"]
+use_parent_material = true
+tile_map_data = PackedByteArray("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AADJ/wsAAgAAAAAAAADK/wEAAgAAAAAAAADL/wEAAgAAAAAAAADM/wEAAgAAAAAAAADM/wAAAgAAAAAAAADM////AgAAAAAAAADM//7/AgAAAAAAAADM//3/AgAAAAAAAADM//z/AgAAAAAAAADM//v/AgAAAAAAAADM//r/AgAAAAAAAADM//n/AgAAAAAAAADM//j/AgAAAAAAAADM//f/AgAAAAAAAADN//j/AgAAAAAAAADN//f/AgAAAAAAAADN//n/AgAAAAAAAADN//r/AgAAAAAAAADN//v/AgAAAAAAAADN//z/AgAAAAAAAADN//3/AgAAAAAAAADN//7/AgAAAAAAAADN////AgAAAAAAAADN/wAAAgAAAAAAAADN/wEAAgAAAAAAAACg////AgAAAAAAAACh////AgAAAAAAAACi////AgAAAAAAAACj////AgAAAAAAAACk////AgAAAAAAAACl////AgAAAAAAAACm////AgAAAAAAAACn////AgAAAAAAAACo////AgAAAAAAAACp////AgAAAAAAAACq////AgAAAAAAAACr////AgAAAAAAAACs////AgAAAAAAAACt////AgAAAAAAAACu////AgAAAAAAAACv////AgAAAAAAAAC0////AgAAAAAAAAC1////AgAAAAAAAAC2////AgAAAAAAAAC3////AgAAAAAAAAC4////AgAAAAAAAAC5////AgAAAAAAAAC6////AgAAAAAAAACd////AgAAAAAAAACc////AgAAAAAAAACb////AgAAAAAAAACX////AgAAAAAAAACd/wAAAgAAAAAAAACc/wAAAgAAAAAAAACb/wAAAgAAAAAAAACX/wAAAgAAAAAAAACW/wAAAgAAAAAAAACW////AgAAAAAAAACW//v/AgAAAAAAAACX//v/AgAAAAAAAACY//v/AgAAAAAAAACZ//v/AgAAAAAAAACa//v/AgAAAAAAAACb//v/AgAAAAAAAACg//v/AgAAAAAAAACh//v/AgAAAAAAAACi//v/AgAAAAAAAACj//v/AgAAAAAAAACk//v/AgAAAAAAAACl//v/AgAAAAAAAACm//v/AgAAAAAAAACn//v/AgAAAAAAAACo//v/AgAAAAAAAACp//v/AgAAAAAAAACr//v/AgAAAAAAAACs//v/AgAAAAAAAACq//v/AgAAAAAAAACc//v/AgAAAAAAAACd//v/AgAAAAAAAACe//v/AgAAAAAAAACf//v/AgAAAAAAAACd/w8AAgAAAAAAAACd/xAAAgAAAAAAAACc/w8AAgAAAAAAAACc/xAAAgAAAAAAAACb/xAAAgAAAAAAAACa/w8AAgAAAAAAAACZ/w8AAgAAAAAAAACZ/xAAAgAAAAAAAACa/xAAAgAAAAAAAACb/w8AAgAAAAAAAACY/xAAAgAAAAAAAACX/xAAAgAAAAAAAACW/xAAAgAAAAAAAACV/xAAAgAAAAAAAACX/w8AAgAAAAAAAACY/w8AAgAAAAAAAACV/w8AAgAAAAAAAACU/w8AAgAAAAAAAACT/w8AAgAAAAAAAACS/w8AAgAAAAAAAACS/xAAAgAAAAAAAACT/xAAAgAAAAAAAACU/xAAAgAAAAAAAACR/xAAAgAAAAAAAACQ/xAAAgAAAAAAAACP/xAAAgAAAAAAAACQ/w8AAgAAAAAAAACR/w8AAgAAAAAAAACO/xAAAgAAAAAAAACP/w8AAgAAAAAAAACO/w8AAgAAAAAAAACN/w8AAgAAAAAAAACN/xAAAgAAAAAAAACM/xAAAgAAAAAAAACL/xAAAgAAAAAAAACK/xAAAgAAAAAAAACJ/xAAAgAAAAAAAACI/xAAAgAAAAAAAACM/w8AAgAAAAAAAACL/w8AAgAAAAAAAACK/w8AAgAAAAAAAACJ/w8AAgAAAAAAAACI/w8AAgAAAAAAAACC////AgAAAAAAAACD////AgAAAAAAAACD/wAAAgAAAAAAAACD/wEAAgAAAAAAAACD/wIAAgAAAAAAAACD/wMAAgAAAAAAAACD/wQAAgAAAAAAAACD/wUAAgAAAAAAAACD/wYAAgAAAAAAAACD/wcAAgAAAAAAAACD/wgAAgAAAAAAAACD/wkAAgAAAAAAAACD/woAAgAAAAAAAACD/wsAAgAAAAAAAACD/wwAAgAAAAAAAACD/w0AAgAAAAAAAACD/w4AAgAAAAAAAACD/w8AAgAAAAAAAACD/xAAAgAAAAAAAACE/xAAAgAAAAAAAACE/w8AAgAAAAAAAACF/w8AAgAAAAAAAACG/xAAAgAAAAAAAACH/xAAAgAAAAAAAACH/w8AAgAAAAAAAACG/w8AAgAAAAAAAACF/xAAAgAAAAAAAACC/xAAAgAAAAAAAACC/w8AAgAAAAAAAACC/w4AAgAAAAAAAACC/w0AAgAAAAAAAACC/wwAAgAAAAAAAACC/wsAAgAAAAAAAACC/woAAgAAAAAAAACC/wkAAgAAAAAAAACC/wgAAgAAAAAAAACC/wcAAgAAAAAAAACC/wYAAgAAAAAAAACC/wUAAgAAAAAAAACC/wQAAgAAAAAAAACC/wMAAgAAAAAAAACC/wIAAgAAAAAAAACC/wEAAgAAAAAAAACC/wAAAgAAAAAAAACV/wAAAgAAAAAAAACQ/wAAAgAAAAAAAACP/wAAAgAAAAAAAACO/wAAAgAAAAAAAACN/wAAAgAAAAAAAACM/wAAAgAAAAAAAACL/wAAAgAAAAAAAACK/wAAAgAAAAAAAACJ/wAAAgAAAAAAAACI/wAAAgAAAAAAAACH/wAAAgAAAAAAAACG/wAAAgAAAAAAAACF/wAAAgAAAAAAAACE/wAAAgAAAAAAAACF////AgAAAAAAAACG////AgAAAAAAAACH////AgAAAAAAAACI////AgAAAAAAAACJ////AgAAAAAAAACK////AgAAAAAAAACL////AgAAAAAAAACM////AgAAAAAAAACN////AgAAAAAAAACO////AgAAAAAAAACP////AgAAAAAAAACQ////AgAAAAAAAACV////AgAAAAAAAACE////AgAAAAAAAACV//v/AgAAAAAAAACU//v/AgAAAAAAAACT//v/AgAAAAAAAACS//v/AgAAAAAAAACR//v/AgAAAAAAAACQ//v/AgAAAAAAAACP//v/AgAAAAAAAACO//v/AgAAAAAAAACN//v/AgAAAAAAAACM//v/AgAAAAAAAACL//v/AgAAAAAAAACK//v/AgAAAAAAAACJ//v/AgAAAAAAAACI//v/AgAAAAAAAACH//v/AgAAAAAAAACG//v/AgAAAAAAAACF//v/AgAAAAAAAACE//v/AgAAAAAAAACD//v/AgAAAAAAAACC//v/AgAAAAAAAACC//z/AgAAAAAAAACC//3/AgAAAAAAAACC//7/AgAAAAAAAACD//7/AgAAAAAAAACD//3/AgAAAAAAAACD//z/AgAAAAAAAACC//r/AgAAAAAAAACD//r/AgAAAAAAAACE//r/AgAAAAAAAACF//r/AgAAAAAAAACG//r/AgAAAAAAAACI//r/AgAAAAAAAACJ//r/AgAAAAAAAACH//r/AgAAAAAAAACK//r/AgAAAAAAAACL//r/AgAAAAAAAACM//r/AgAAAAAAAACN//r/AgAAAAAAAACO//r/AgAAAAAAAACP//r/AgAAAAAAAACQ//r/AgAAAAAAAACR//r/AgAAAAAAAACS//r/AgAAAAAAAACT//r/AgAAAAAAAACU//r/AgAAAAAAAACV//r/AgAAAAAAAACW//r/AgAAAAAAAACX//r/AgAAAAAAAACY//r/AgAAAAAAAACZ//r/AgAAAAAAAACa//r/AgAAAAAAAACb//r/AgAAAAAAAACc//r/AgAAAAAAAACd//r/AgAAAAAAAACe//r/AgAAAAAAAACf//r/AgAAAAAAAACg//r/AgAAAAAAAACh//r/AgAAAAAAAACi//r/AgAAAAAAAACj//r/AgAAAAAAAACk//r/AgAAAAAAAACl//r/AgAAAAAAAACm//r/AgAAAAAAAACn//r/AgAAAAAAAACo//r/AgAAAAAAAACp//r/AgAAAAAAAACq//r/AgAAAAAAAACr//r/AgAAAAAAAACs//r/AgAAAAAAAACW/w8AAgAAAAAAAACa////AgAAAAAAAACa/wAAAgAAAAAAAACY////AgAAAAAAAACZ////AgAAAAAAAACZ/wAAAgAAAAAAAACY/wAAAgAAAAAAAACU////AgAAAAAAAACU/wAAAgAAAAAAAACd/wUAAgAAAAAAAACc/wUAAgAAAAAAAACK/w0AAgAAAAAAAACJ/w0AAgAAAAAAAACI/w0AAgAAAAAAAACK/wsAAgAAAAAAAACK/wwAAgAAAAAAAACO/wsAAgAAAAAAAACF/wgAAgAAAAAAAACE/wgAAgAAAAAAAACW/wsAAgAAAAAAAACV/wsAAgAAAAAAAACW/woAAgAAAAAAAACP/wsAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_q6oo2")
+
+[node name="How to climb" type="Label" parent="tutorial/tutorial_tilemap"]
+offset_left = -3904.0
+offset_top = 128.0
+offset_right = -3656.0
+offset_bottom = 177.0
+scale = Vector2(0.8, 0.8)
+text = "Climb the vines by holding jump
+(W or Space)"
+
+[node name="How to throw" type="Label" parent="tutorial/tutorial_tilemap"]
+offset_left = -5409.0
+offset_top = 582.0
+offset_right = -4923.0
+offset_bottom = 631.0
+scale = Vector2(1.2, 1.2)
+text = "Press Q to pick up the Godogand hold Left click
+ to throw into the weakpoint of the wall."
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="climable_vines" parent="tutorial" instance=ExtResource("6_y55pw")]
 position = Vector2(-3650, 157)
@@ -159,17 +198,21 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(-5116, 1178)
 scale = Vector2(0.7, 0.7)
 
+[node name="climable_vines3" parent="tutorial" instance=ExtResource("6_y55pw")]
+position = Vector2(-6449, 471)
+scale = Vector2(0.5, 0.5)
+
 [node name="secret_wall" type="Area2D" parent="tutorial"]
 script = ExtResource("5_ru77e")
 metadata/_edit_group_ = true
 
+[node name="secret_wall_tilemap" type="TileMapLayer" parent="tutorial/secret_wall"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AACQ//z/AAAAAAAAAACQ//3/AAAAAAAAAACQ//7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_k1qeu")
+
 [node name="firework_node" parent="tutorial/secret_wall" instance=ExtResource("24_h2ra1")]
 position = Vector2(-7224, -156)
-
-[node name="TileMap2" type="TileMap" parent="tutorial/secret_wall"]
-tile_set = SubResource("TileSet_k1qeu")
-format = 2
-layer_0/tile_data = PackedInt32Array(-65641, 0, 0, -131177, 0, 0, -196713, 0, 0)
 
 [node name="gojo" type="Sprite2D" parent="tutorial/secret_wall"]
 visible = false
@@ -197,31 +240,8 @@ I used for this game until I could be bothered to do art
 Are there more secrets to be found?  "
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tutorial/secret_wall"]
-position = Vector2(-7296, -160)
+position = Vector2(-7521.5, -160)
 shape = SubResource("RectangleShape2D_qnx4f")
-
-[node name="TileMap" type="TileMap" parent="tutorial"]
-tile_set = SubResource("TileSet_q6oo2")
-format = 2
-layer_0/tile_data = PackedInt32Array(1048506, 2, 0, 1048505, 2, 0, 1048504, 2, 0, 1048503, 2, 0, 1048502, 2, 0, 1048501, 2, 0, 1114037, 2, 0, 1179573, 2, 0, 1245109, 2, 0, 1310645, 2, 0, 1376181, 2, 0, 1441717, 2, 0, 1441716, 2, 0, 1441715, 2, 0, 1441714, 2, 0, 1441713, 2, 0, 1441712, 2, 0, 1441711, 2, 0, 1441710, 2, 0, 1376174, 2, 0, 1310638, 2, 0, 1245102, 2, 0, 1179566, 2, 0, 1114030, 2, 0, 1048494, 2, 0, 1048493, 2, 0, 1048492, 2, 0, 1048491, 2, 0, 1048490, 2, 0, 1048489, 2, 0, 1048488, 2, 0, 1048487, 2, 0, 1048486, 2, 0, 1048485, 2, 0, 1048484, 2, 0, 1048480, 2, 0, 1048481, 2, 0, 1048482, 2, 0, 1048483, 2, 0, 982969, 2, 0, 982970, 2, 0, 917434, 2, 0, 917433, 2, 0, 851897, 2, 0, 851898, 2, 0, 458681, 2, 0, 458682, 2, 0, 393146, 2, 0, 393145, 2, 0, 327609, 2, 0, 327610, 2, 0, 262074, 2, 0, 262073, 2, 0, 196537, 2, 0, 196538, 2, 0, 131002, 2, 0, 131001, 2, 0, 65465, 2, 0, 65466, 2, 0, 786362, 2, 0, 786361, 2, 0, 786334, 2, 0, 786335, 2, 0, 720799, 2, 0, 720798, 2, 0, 655262, 2, 0, 589727, 2, 0, 655263, 2, 0, 589726, 2, 0, 524190, 2, 0, 458654, 2, 0, 458655, 2, 0, 524191, 2, 0, 393118, 2, 0, 393119, 2, 0, 327582, 2, 0, 327583, 2, 0, 262047, 2, 0, 196511, 2, 0, 130975, 2, 0, 65439, 2, 0, 65438, 2, 0, 130974, 2, 0, 196510, 2, 0, 262046, 2, 0, 1048478, 2, 0, 1048479, 2, 0, 786363, 2, 0, 786364, 2, 0, 786365, 2, 0, 786366, 2, 0, 786367, 2, 0, 786368, 2, 0, 786369, 2, 0, 786370, 2, 0, 786371, 2, 0, 458696, 2, 0, 524232, 2, 0, 589768, 2, 0, 393160, 2, 0, 327624, 2, 0, 262088, 2, 0, 196552, 2, 0, 131016, 2, 0, 65480, 2, 0, 65481, 2, 0, 65482, 2, 0, 65483, 2, 0, 65476, 2, 0, 65475, 2, 0, 65477, 2, 0, 65471, 2, 0, 65470, 2, 0, 65472, 2, 0, -64, 2, 0, -61, 2, 0, 65464, 2, 0, 65463, 2, 0, 65462, 2, 0, 65461, 2, 0, 65460, 2, 0, 65459, 3, 0, 65458, 3, 0, 65457, 3, 0, 65456, 3, 0, 65454, 2, 0, 65455, 2, 0, 65453, 2, 0, 65452, 2, 0, 65451, 2, 0, 65450, 2, 0, 65449, 2, 0, 65448, 2, 0, 65447, 2, 0, 65446, 2, 0, 65445, 2, 0, 65444, 2, 0, 65443, 2, 0, 65442, 2, 0, 65441, 2, 0, 65440, 2, 0, 458683, 2, 0, 458684, 2, 0, 458685, 2, 0, 458686, 2, 0, 458687, 2, 0, 458688, 2, 0, 458689, 2, 0, 655300, 2, 0, 655301, 2, 0, 720837, 2, 0, 720836, 2, 0, 720838, 2, 0, 655302, 2, 0, 655303, 2, 0, 720839, 2, 0, 655304, 2, 0, 720840, 2, 0, 786376, 2, 0, 786375, 2, 0, 786374, 2, 0, 786373, 2, 0, 786372, 2, 0, -97, 2, 0, -98, 2, 0, 1114029, 2, 0, 1114028, 2, 0, 1114027, 2, 0, 1114026, 2, 0, 1114025, 2, 0, 1114024, 2, 0, 1114023, 2, 0, 1114022, 2, 0, 1114021, 2, 0, 1114020, 2, 0, 1114019, 2, 0, 1114018, 2, 0, 1114017, 2, 0, 1114016, 2, 0, 1114015, 2, 0, 1114014, 2, 0, 1179565, 2, 0, 1245101, 2, 0, 1310637, 2, 0, 1376173, 2, 0, 1441709, 2, 0, 1507245, 2, 0, 1507246, 2, 0, 1507247, 2, 0, 1507248, 2, 0, 1507249, 2, 0, 1507250, 2, 0, 1507251, 2, 0, 1507252, 2, 0, 1507253, 2, 0, 1507254, 2, 0, 1441718, 2, 0, 1376182, 2, 0, 1310646, 2, 0, 1245110, 2, 0, 1179574, 2, 0, 1114038, 2, 0, 1114039, 2, 0, 1114040, 2, 0, 1114041, 2, 0, 1114042, 2, 0, 851899, 2, 0, 851900, 2, 0, 851901, 2, 0, 851902, 2, 0, 851903, 2, 0, 851904, 2, 0, 851905, 2, 0, 851906, 2, 0, 851907, 2, 0, 851908, 2, 0, 851909, 2, 0, 851910, 2, 0, 851911, 2, 0, 851912, 2, 0, 131017, 2, 0, 196553, 2, 0, 262089, 2, 0, 327625, 2, 0, 393161, 2, 0, 458697, 2, 0, 524233, 2, 0, 589769, 2, 0, 655305, 2, 0, 720841, 2, 0, 851913, 2, 0, 786377, 2, 0, 131018, 2, 0, 131019, 2, 0, 131020, 2, 0, 65484, 2, 0, -52, 2, 0, -65588, 2, 0, -131124, 2, 0, -196660, 2, 0, -262196, 2, 0, -327732, 2, 0, -393268, 2, 0, -458804, 2, 0, -524340, 2, 0, -458803, 2, 0, -524339, 2, 0, -393267, 2, 0, -327731, 2, 0, -262195, 2, 0, -196659, 2, 0, -131123, 2, 0, -65587, 2, 0, -51, 2, 0, 65485, 2, 0, 131021, 2, 0, -96, 2, 0, -95, 2, 0, -94, 2, 0, -93, 2, 0, -92, 2, 0, -91, 2, 0, -90, 2, 0, -89, 2, 0, -88, 2, 0, -87, 2, 0, -86, 2, 0, -85, 2, 0, -84, 2, 0, -83, 2, 0, -82, 2, 0, -81, 2, 0, -76, 2, 0, -75, 2, 0, -74, 2, 0, -73, 2, 0, -72, 2, 0, -71, 2, 0, -70, 2, 0, -99, 2, 0, -100, 2, 0, -101, 2, 0, -105, 2, 0, 65437, 2, 0, 65436, 2, 0, 65435, 2, 0, 65431, 2, 0, 65430, 2, 0, -106, 2, 0, -262250, 2, 0, -262249, 2, 0, -262248, 2, 0, -262247, 2, 0, -262246, 2, 0, -262245, 2, 0, -262240, 2, 0, -262239, 2, 0, -262238, 2, 0, -262237, 2, 0, -262236, 2, 0, -262235, 2, 0, -262234, 2, 0, -262233, 2, 0, -262232, 2, 0, -262231, 2, 0, -262229, 2, 0, -262228, 2, 0, -262230, 2, 0, -262244, 2, 0, -262243, 2, 0, -262242, 2, 0, -262241, 2, 0, 1048477, 2, 0, 1114013, 2, 0, 1048476, 2, 0, 1114012, 2, 0, 1114011, 2, 0, 1048474, 2, 0, 1048473, 2, 0, 1114009, 2, 0, 1114010, 2, 0, 1048475, 2, 0, 1114008, 2, 0, 1114007, 2, 0, 1114006, 2, 0, 1114005, 2, 0, 1048471, 2, 0, 1048472, 2, 0, 1048469, 2, 0, 1048468, 2, 0, 1048467, 2, 0, 1048466, 2, 0, 1114002, 2, 0, 1114003, 2, 0, 1114004, 2, 0, 1114001, 2, 0, 1114000, 2, 0, 1113999, 2, 0, 1048464, 2, 0, 1048465, 2, 0, 1113998, 2, 0, 1048463, 2, 0, 1048462, 2, 0, 1048461, 2, 0, 1113997, 2, 0, 1113996, 2, 0, 1113995, 2, 0, 1113994, 2, 0, 1113993, 2, 0, 1113992, 2, 0, 1048460, 2, 0, 1048459, 2, 0, 1048458, 2, 0, 1048457, 2, 0, 1048456, 2, 0, -126, 2, 0, -125, 2, 0, 65411, 2, 0, 130947, 2, 0, 196483, 2, 0, 262019, 2, 0, 327555, 2, 0, 393091, 2, 0, 458627, 2, 0, 524163, 2, 0, 589699, 2, 0, 655235, 2, 0, 720771, 2, 0, 786307, 2, 0, 851843, 2, 0, 917379, 2, 0, 982915, 2, 0, 1048451, 2, 0, 1113987, 2, 0, 1113988, 2, 0, 1048452, 2, 0, 1048453, 2, 0, 1113990, 2, 0, 1113991, 2, 0, 1048455, 2, 0, 1048454, 2, 0, 1113989, 2, 0, 1113986, 2, 0, 1048450, 2, 0, 982914, 2, 0, 917378, 2, 0, 851842, 2, 0, 786306, 2, 0, 720770, 2, 0, 655234, 2, 0, 589698, 2, 0, 524162, 2, 0, 458626, 2, 0, 393090, 2, 0, 327554, 2, 0, 262018, 2, 0, 196482, 2, 0, 130946, 2, 0, 65410, 2, 0, 65429, 2, 0, 65428, 2, 0, 65427, 2, 0, 65426, 2, 0, 65425, 2, 0, 65424, 2, 0, 65423, 2, 0, 65422, 2, 0, 65421, 2, 0, 65420, 2, 0, 65419, 2, 0, 65418, 2, 0, 65417, 2, 0, 65416, 2, 0, 65415, 2, 0, 65414, 2, 0, 65413, 2, 0, 65412, 2, 0, -123, 2, 0, -122, 2, 0, -121, 2, 0, -120, 2, 0, -119, 2, 0, -118, 2, 0, -117, 2, 0, -116, 2, 0, -115, 2, 0, -114, 2, 0, -113, 2, 0, -112, 2, 0, -111, 2, 0, -108, 2, 0, -107, 2, 0, -109, 2, 0, -110, 2, 0, -124, 2, 0, -262251, 2, 0, -262252, 2, 0, -262253, 2, 0, -262254, 2, 0, -262255, 2, 0, -262256, 2, 0, -262257, 2, 0, -262258, 2, 0, -262259, 2, 0, -262260, 2, 0, -262261, 2, 0, -262262, 2, 0, -262263, 2, 0, -262264, 2, 0, -262265, 2, 0, -262266, 2, 0, -262267, 2, 0, -262268, 2, 0, -262269, 2, 0, -262270, 2, 0, -196734, 2, 0, -131198, 2, 0, -65662, 2, 0, -65661, 2, 0, -131197, 2, 0, -196733, 2, 0, -327806, 2, 0, -327805, 2, 0, -327804, 2, 0, -327803, 2, 0, -327802, 2, 0, -327800, 2, 0, -327799, 2, 0, -327801, 2, 0, -327798, 2, 0, -327797, 2, 0, -327796, 2, 0, -327795, 2, 0, -327794, 2, 0, -327793, 2, 0, -327792, 2, 0, -327791, 2, 0, -327790, 2, 0, -327789, 2, 0, -327788, 2, 0, -327787, 2, 0, -327786, 2, 0, -327785, 2, 0, -327784, 2, 0, -327783, 2, 0, -327782, 2, 0, -327781, 2, 0, -327780, 2, 0, -327779, 2, 0, -327778, 2, 0, -327777, 2, 0, -327776, 2, 0, -327775, 2, 0, -327774, 2, 0, -327773, 2, 0, -327772, 2, 0, -327771, 2, 0, -327770, 2, 0, -327769, 2, 0, -327768, 2, 0, -327767, 2, 0, -327766, 2, 0, -327765, 2, 0, -327764, 2, 0, 1048470, 2, 0, 589700, 2, 0, 589701, 2, 0, 589702, 2, 0, 589703, 2, 0)
-
-[node name="How to throw" type="Label" parent="tutorial/TileMap"]
-offset_left = -5254.0
-offset_top = 666.0
-offset_right = -4768.0
-offset_bottom = 715.0
-text = "You're too heavy to stand on this! Press Q to pick up the Godog
-and hold Left click to throw into the weakpoint of the wall."
-metadata/_edit_use_anchors_ = true
-
-[node name="How to climb" type="Label" parent="tutorial/TileMap"]
-offset_left = -3904.0
-offset_top = 128.0
-offset_right = -3656.0
-offset_bottom = 177.0
-scale = Vector2(0.8, 0.8)
-text = "Climb the vines by holding jump
-(W or Space)"
 
 [node name="breakable_wall" type="Area2D" parent="tutorial"]
 script = ExtResource("7_j1j8a")
@@ -230,36 +250,22 @@ script = ExtResource("7_j1j8a")
 position = Vector2(-27, 81)
 polygon = PackedVector2Array(-4516, 366, -4516, 622, -4387, 622, -4387, 366)
 
-[node name="window_tilemap" type="TileMap" parent="tutorial/breakable_wall"]
+[node name="window_tilemap" type="TileMapLayer" parent="tutorial/breakable_wall"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAC5/wkAAAAAAAAAAAC5/wgAAAAAAAAAAAC5/wcAAAAAAAAAAAC5/woAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_gsu21")
-format = 2
-layer_0/tile_data = PackedInt32Array(720825, 0, 0, 655289, 0, 0, 589753, 0, 0, 524217, 0, 0)
 
 [node name="breakable_wall2" type="Area2D" parent="tutorial"]
 script = ExtResource("7_4li2l")
 
-[node name="brick_wall_tilemap" type="TileMap" parent="tutorial/breakable_wall2"]
+[node name="brick_wall_tilemap" type="TileMapLayer" parent="tutorial/breakable_wall2"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAC0/w8AAAAAAAAAAACz/w8AAAAAAAAAAACy/w8AAAAAAAAAAACx/w8AAAAAAAAAAACw/w8AAAAAAAAAAACv/w8AAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_7yv4g")
-format = 2
-layer_0/tile_data = PackedInt32Array(1048500, 0, 0, 1048499, 0, 0, 1048498, 0, 0, 1048497, 0, 0, 1048496, 0, 0, 1048495, 0, 0)
 
 [node name="breakable_wall_hitbox" type="CollisionPolygon2D" parent="tutorial/breakable_wall2"]
 position = Vector2(-669, 594)
 polygon = PackedVector2Array(-4131, 367, -4131, 430, -4427, 430, -4416, 366)
-
-[node name="tutorial_door" type="Area2D" parent="tutorial"]
-position = Vector2(-18, -1)
-scale = Vector2(1.5, 1.5)
-script = ExtResource("9_pvhdb")
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="tutorial/tutorial_door"]
-position = Vector2(-4128.13, 575.733)
-texture = ExtResource("10_6ub04")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tutorial/tutorial_door"]
-position = Vector2(-2176.13, -64.2667)
-polygon = PackedVector2Array(-1984, 576, -1920, 576, -1920, 704, -1984, 704)
 
 [node name="vent_camera_changer" type="Area2D" parent="tutorial"]
 position = Vector2(-6279, 350)
@@ -282,12 +288,127 @@ position = Vector2(0.000175834, 0)
 shape = SubResource("RectangleShape2D_wm6gs")
 
 [node name="door_1" parent="tutorial" instance=ExtResource("3_3xygc")]
-position = Vector2(-7872, 832)
+position = Vector2(-7232, 864)
+scale = Vector2(0.75, 0.75)
 
 [node name="door_switch" parent="tutorial" instance=ExtResource("5_e28gp")]
-position = Vector2(-7804, 367)
+position = Vector2(-7875, 382)
+
+[node name="tutorial_door" type="Area2D" parent="tutorial"]
+position = Vector2(-18, 1)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("9_pvhdb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial/tutorial_door"]
+position = Vector2(-4128.13, 575.733)
+texture = ExtResource("10_6ub04")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tutorial/tutorial_door"]
+position = Vector2(-2176.13, -64.2667)
+polygon = PackedVector2Array(-1984, 576, -1920, 576, -1920, 704, -1984, 704)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="tutorial/tutorial_door"]
+occluder = SubResource("OccluderPolygon2D_jiiip")
+
+[node name="door_pressure_plate" type="Area2D" parent="tutorial"]
+position = Vector2(229, -642)
+script = ExtResource("17_rmoqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tutorial/door_pressure_plate"]
+position = Vector2(-6564.75, 959)
+shape = SubResource("RectangleShape2D_c6x3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="tutorial/door_pressure_plate"]
+position = Vector2(-6565, 959)
+scale = Vector2(1, 0.0578512)
+texture = ExtResource("7_xj82v")
+
+[node name="Label" type="Label" parent="tutorial/door_pressure_plate"]
+offset_left = -6763.0
+offset_top = 896.0
+offset_right = -6568.0
+offset_bottom = 945.0
+text = "Get to the pressure plate
+to open the door"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="tutorial"]
+color = Color(0.299547, 0.299547, 0.299547, 1)
+
+[node name="PointLight2D2" type="PointLight2D" parent="tutorial"]
+position = Vector2(-5381.65, 764.942)
+rotation = 1.5708
+scale = Vector2(7.61997, 15.298)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("20_8pics")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="tutorial"]
+position = Vector2(-7585, 113)
+rotation = 1.5708
+scale = Vector2(21.9664, 50)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("20_8pics")
+offset = Vector2(90, 2)
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="tutorial"]
+position = Vector2(-6440, 126.483)
+rotation = 1.5708
+scale = Vector2(5.52402, 8.4537)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("20_8pics")
+offset = Vector2(80, 2)
+metadata/_edit_lock_ = true
+
+[node name="light_1" type="Sprite2D" parent="tutorial"]
+position = Vector2(-5351, 191)
+scale = Vector2(4, 4)
+texture = SubResource("CompressedTexture2D_286cd")
+
+[node name="light_3" type="Sprite2D" parent="tutorial"]
+position = Vector2(-7584, 192)
+scale = Vector2(4, 4)
+texture = ExtResource("21_grvwc")
+
+[node name="light_2" type="Sprite2D" parent="tutorial"]
+position = Vector2(-6440, 190)
+scale = Vector2(4, 4)
+texture = ExtResource("21_grvwc")
+
+[node name="Label" type="Label" parent="tutorial"]
+offset_left = -4342.0
+offset_top = 504.0
+offset_right = -4211.0
+offset_bottom = 589.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Too dark?
+F is for Flashlight
+(Unless you changed it)"
+
+[node name="PointLight2D5" type="PointLight2D" parent="tutorial"]
+position = Vector2(-3811, 156)
+scale = Vector2(1.14, 0.9032)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("23_yy7fr")
+
+[node name="PointLight2D4" type="PointLight2D" parent="tutorial"]
+position = Vector2(-4274, 547)
+scale = Vector2(1, 0.92)
+energy = 0.6
+shadow_enabled = true
+texture = SubResource("CompressedTexture2D_xyqxw")
 
 [node name="level_1" type="Node2D" parent="."]
+
+[node name="level_1_tilemap" type="TileMapLayer" parent="level_1"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAARAA8AAAAAAAAAAAASAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAAAAAAAAAAgAA8AAAAAAAAAAAAgAA4AAAAAAAAAAAAgAA0AAAAAAAAAAAAgAAwAAAAAAAAAAAAgAAsAAAAAAAAAAAAgAAoAAAAAAAAAAAAgAAkAAAAAAAAAAAAgAAgAAAAAAAAAAAAgAAcAAAAAAAAAAAAgAAYAAAAAAAAAAAAgAAUAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAgAAIAAAAAAAAAAAAgAAMAAAAAAAAAAAAgAAQAAAAAAAAAAAAVAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAATAAgAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_b8f73")
 
 [node name="Label" type="Label" parent="level_1"]
 offset_left = 67.0
@@ -304,21 +425,7 @@ Z/Q: Pick up/Put down/Cancel throw
 Left click (hold): charge up throw when picked up"
 metadata/_edit_use_anchors_ = true
 
-[node name="enemy" parent="level_1" instance=ExtResource("8_t6ncc")]
-position = Vector2(1157, 565)
-rotation = -1.5708
-
-[node name="TileMap" type="TileMap" parent="level_1"]
-tile_set = SubResource("TileSet_b8f73")
-format = 2
-layer_0/tile_data = PackedInt32Array(983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 0, 0, 917536, 0, 0, 852000, 0, 0, 786464, 0, 0, 720928, 0, 0, 655392, 0, 0, 589856, 0, 0, 524320, 0, 0, 458784, 0, 0, 393248, 0, 0, 327712, 0, 0, 917504, 0, 0, 851968, 0, 0, 786432, 0, 0, 720896, 0, 0, 655360, 0, 0, 589824, 0, 0, 524288, 0, 0, 458752, 0, 0, 393216, 0, 0, 327680, 0, 0, 262144, 0, 0, 196608, 0, 0, 131072, 0, 0, 65536, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 65568, 0, 0, 131104, 0, 0, 196640, 0, 0, 262176, 0, 0, 524309, 0, 0, 524308, 0, 0, 524307, 0, 0, 524306, 0, 0, 524305, 0, 0, 524304, 0, 0, 524303, 0, 0, 524302, 0, 0, 1048506, 0, 0, 1048505, 0, 0, 1048504, 0, 0, 1048503, 0, 0, 1048502, 0, 0, 1048501, 0, 0, 1114037, 0, 0, 1179573, 0, 0, 1245109, 0, 0, 1310645, 0, 0, 1376181, 0, 0, 1441717, 0, 0, 1441716, 0, 0, 1441715, 0, 0, 1441714, 0, 0, 1441713, 0, 0, 1441712, 0, 0, 1441711, 0, 0, 1441710, 0, 0, 1376174, 0, 0, 1310638, 0, 0, 1245102, 0, 0, 1179566, 0, 0, 1114030, 0, 0, 1048494, 0, 0, 1048493, 0, 0, 1048492, 0, 0, 1048491, 0, 0, 1048490, 0, 0, 1048489, 0, 0, 1048488, 0, 0, 1048487, 0, 0, 1048486, 0, 0, 1048485, 0, 0, 1048484, 0, 0, 1048483, 0, 0, 1048482, 0, 0, 1048481, 0, 0, 1048480, 0, 0)
-
 [node name="level_2" type="Node2D" parent="."]
-
-[node name="enemy2" parent="level_2" instance=ExtResource("8_t6ncc")]
-position = Vector2(4662, 1000)
-rotation = -1.5708
-scale = Vector2(2, 2)
 
 [node name="floor_2" type="StaticBody2D" parent="level_2"]
 position = Vector2(4662, 1000)
@@ -343,7 +450,7 @@ all the sprites are placeholders :)"
 metadata/_edit_use_anchors_ = true
 
 [node name="player" parent="." instance=ExtResource("2_l41cj")]
-position = Vector2(-5904, 847)
+position = Vector2(-6012, 818)
 
 [node name="Line2Dtest" type="Line2D" parent="."]
 texture_repeat = 2
@@ -359,29 +466,33 @@ sharp_limit = 1.0
 script = ExtResource("17_oqeki")
 
 [node name="godog" parent="." instance=ExtResource("4_3bj5p")]
-position = Vector2(-5781, 903)
+position = Vector2(-5885, 880)
 
 [connection signal="godog_camera_limit" from="camera manager" to="godog" method="_on_camera_manager_godog_camera_limit"]
 [connection signal="player_camera_limit" from="camera manager" to="player" method="_on_camera_manager_player_camera_limit"]
+[connection signal="respawn" from="tutorial/enemy" to="." method="_on_enemy_respawn"]
 [connection signal="godog_can_climb" from="tutorial/climable_vines" to="godog" method="_on_climable_vines_godog_can_climb"]
 [connection signal="player_can_climb" from="tutorial/climable_vines" to="player" method="_on_climable_vines_player_can_climb"]
 [connection signal="godog_can_climb" from="tutorial/climable_vines2" to="godog" method="_on_climable_vines_godog_can_climb"]
 [connection signal="player_can_climb" from="tutorial/climable_vines2" to="player" method="_on_climable_vines_player_can_climb"]
+[connection signal="godog_can_climb" from="tutorial/climable_vines3" to="godog" method="_on_climable_vines_godog_can_climb"]
+[connection signal="player_can_climb" from="tutorial/climable_vines3" to="player" method="_on_climable_vines_player_can_climb"]
 [connection signal="area_entered" from="tutorial/secret_wall" to="tutorial/secret_wall" method="_on_area_entered"]
 [connection signal="area_exited" from="tutorial/secret_wall" to="tutorial/secret_wall" method="_on_area_exited"]
 [connection signal="area_entered" from="tutorial/breakable_wall" to="tutorial/breakable_wall" method="_on_area_entered"]
 [connection signal="area_entered" from="tutorial/breakable_wall2" to="tutorial/breakable_wall2" method="_on_area_entered"]
-[connection signal="area_entered" from="tutorial/tutorial_door" to="tutorial/tutorial_door" method="_on_area_entered"]
 [connection signal="area_entered" from="tutorial/vent_camera_changer" to="tutorial/vent_camera_changer" method="_on_area_entered"]
 [connection signal="camera_limit" from="tutorial/vent_camera_changer" to="camera manager" method="_on_vent_camera_changer_camera_limit"]
 [connection signal="area_entered" from="tutorial/vent_camera_changer2" to="tutorial/vent_camera_changer2" method="_on_area_entered"]
 [connection signal="camera_limit" from="tutorial/vent_camera_changer2" to="camera manager" method="_on_vent_camera_changer_camera_limit"]
 [connection signal="level_2" from="tutorial/door_1" to="." method="_on_door_1_level_2"]
-[connection signal="flicked_off" from="tutorial/door_switch" to="level_1/enemy" method="_on_door_switch_flicked_off"]
+[connection signal="flicked_off" from="tutorial/door_switch" to="tutorial/enemy" method="_on_door_switch_flicked_off"]
 [connection signal="flicked_off" from="tutorial/door_switch" to="tutorial/door_1" method="_on_door_switch_flicked_off"]
-[connection signal="flicked_on" from="tutorial/door_switch" to="level_1/enemy" method="_on_door_switch_flicked_on"]
+[connection signal="flicked_on" from="tutorial/door_switch" to="tutorial/enemy" method="_on_door_switch_flicked_on"]
 [connection signal="flicked_on" from="tutorial/door_switch" to="tutorial/door_1" method="_on_door_switch_flicked_on"]
-[connection signal="respawn" from="level_1/enemy" to="." method="_on_enemy_respawn"]
+[connection signal="area_entered" from="tutorial/tutorial_door" to="tutorial/tutorial_door" method="_on_area_entered"]
+[connection signal="area_entered" from="tutorial/door_pressure_plate" to="tutorial/door_pressure_plate" method="_on_area_entered"]
+[connection signal="area_exited" from="tutorial/door_pressure_plate" to="tutorial/door_pressure_plate" method="_on_area_exited"]
 [connection signal="camera_update" from="player" to="camera manager" method="_on_player_camera_update"]
 [connection signal="dropped" from="player" to="godog" method="_on_player_dropped"]
 [connection signal="pick_up" from="player" to="godog" method="_on_player_pick_up"]

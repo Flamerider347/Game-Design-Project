@@ -1,4 +1,3 @@
-res://scripts/breakable_wall.gd
 res://prefabs/game.tscn
 res://game.gdshader
 res://prefabs/menu.tscn
@@ -7,3 +6,11 @@ res://prefabs/godog.tscn
 res://prefabs/door_switch.tscn
 res://prefabs/door_1.tscn
 res://prefabs/climable_vines.tscn
+res://scripts/moveable_trampoline.gd
+res://scripts/godog.gd
+res://scripts/player.gd
+res://prefabs/enemy.tscn
+res://scripts/enemy.gd
+res://scripts/light_1.gd
+res://scripts/light_2.gd
+res://scripts/light_3.gd

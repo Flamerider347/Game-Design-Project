@@ -19,12 +19,15 @@ var emit_position = false
 var charging = false
 var can_climb = false
 var climbing = false
+var flashlight_enabled = false
+var flashlight_timer_timeout = true
 
 signal update_position
 signal swapped
 signal thrown
 signal camera_update
 signal throw_charge
+signal flashlight
 
 @onready var player_var = get_parent().get_node("player")
 
@@ -46,12 +49,25 @@ func _physics_process(delta):
 #region Movement, Respawning, Throwing & Camera 
 func moving(_delta):
 	if controlling:
+		if Input.is_action_just_released("player_flashlight"):
+			if not flashlight_enabled and flashlight_timer_timeout:
+				flashlight_timer_timeout = false
+				$flashlight/flashlight_timer.start(0.1)
+				$flashlight.show()
+				flashlight_enabled = true
+			if flashlight_enabled and flashlight_timer_timeout:
+				flashlight_timer_timeout = false
+				$flashlight/flashlight_timer.start(0.1)
+				$flashlight.hide()
+				flashlight_enabled = false
 		if Input.is_action_pressed("player_jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 		if Input.is_action_pressed("player_left"):
 			position.x -= SPEED
+			$flashlight.rotation_degrees = 180
 		if Input.is_action_pressed("player_right"):
 			position.x += SPEED
+			$flashlight.rotation_degrees = 0
 		if can_climb:
 			if Input.is_action_pressed("player_jump"):
 				climbing = true
@@ -62,6 +78,7 @@ func moving(_delta):
 	if not is_on_floor() and apply_gravity and not climbing:
 		velocity.y += gravity * _delta
 	move_and_slide()
+	
 
 func _on_climable_vines_godog_can_climb(climbable):
 	can_climb = climbable
@@ -152,3 +169,6 @@ func _on_dog_swap_timer_timeout():
 
 #endregion
 
+
+func _on_flashlight_timer_timeout() -> void:
+	flashlight_timer_timeout = true

@@ -1,28 +1,149 @@
-[gd_scene load_steps=2 format=3 uid="uid://5hmsq15bi6cr"]
+[gd_scene load_steps=13 format=4 uid="uid://5hmsq15bi6cr"]
 
 [ext_resource type="Script" path="res://scripts/play_button.gd" id="1_bblbh"]
+[ext_resource type="Texture2D" uid="uid://r4bk3d4cy885" path="res://sprites/wood floor.png" id="1_hhl17"]
+[ext_resource type="Texture2D" uid="uid://c5bhwasgsdqkh" path="res://sprites/stone-wall-from-bricks-rock-game-background-in-cartoon-style-seamless-textured-surface-ui-game-asset-road-or-floor-material-illustration-vector.jpg" id="1_nh30b"]
+[ext_resource type="Texture2D" uid="uid://b341yvir5bp07" path="res://sprite_0.png" id="2_hmep5"]
+[ext_resource type="Texture2D" uid="uid://bt8008wkv6cv0" path="res://sprites/godot_cone_test.png" id="3_sdhm7"]
+[ext_resource type="Script" path="res://scripts/light_2.gd" id="6_ovme8"]
+[ext_resource type="Script" path="res://scripts/light_1.gd" id="6_rug6b"]
+[ext_resource type="Script" path="res://scripts/light_3.gd" id="8_1o7u8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1y4k"]
+texture = ExtResource("1_hhl17")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x2ynr"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_g1y4k")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d66dw"]
+size = Vector2(425, 1097)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u3h2x"]
+load_path = "res://.godot/imported/godot_cone_test.png-6842e21dd63d3416f342d96cb3eb4c1f.ctex"
 
 [node name="menu" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(478, 480)
+autoscroll = Vector2(8, 0)
+repeat_times = 15
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(126, 56)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_nh30b")
+centered = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAAWABAAAAAAAAAAAAAXABAAAAAAAAAAAAAYABAAAAAAAAAAAAAZABAAAAAAAAAAAAAaABAAAAAAAAAAAAAbABAAAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAAcABAAAAAAAAAAAAAaAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAATAA8AAAAAAAAAAAASAA8AAAAAAAAAAAARAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAADAA8AAAAAAAAAAAACAA8AAAAAAAAAAAABAA8AAAAAAAAAAAABAA4AAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAdAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAdAAEAAAAAAAAAAAAdAAIAAAAAAAAAAAAdAAMAAAAAAAAAAAAdAAQAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA0AAAAAAAAAAAAcAAwAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAkAAAAAAAAAAAAcAAgAAAAAAAAAAAAcAAcAAAAAAAAAAAAcAAYAAAAAAAAAAAAcAAUAAAAAAAAAAAAcAAQAAAAAAAAAAAAcAAMAAAAAAAAAAAAcAAIAAAAAAAAAAAAcAAEAAAAAAAAAAAAbAAEAAAAAAAAAAAAaAAEAAAAAAAAAAAAZAAEAAAAAAAAAAAAYAAEAAAAAAAAAAAAXAAEAAAAAAAAAAAAWAAEAAAAAAAAAAAAVAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAATAAEAAAAAAAAAAAASAAEAAAAAAAAAAAARAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAA0AAAAAAAAAAAABAAwAAAAAAAAAAAABAAsAAAAAAAAAAAABAAoAAAAAAAAAAAABAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_x2ynr")
 
 [node name="menu_camera" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="play_button" type="Button" parent="."]
-offset_left = 912.0
-offset_top = 352.0
-offset_right = 962.0
-offset_bottom = 387.0
+offset_left = 936.0
+offset_top = 448.0
+offset_right = 986.0
+offset_bottom = 483.0
 pivot_offset = Vector2(25, 17.5)
 text = "Play"
 script = ExtResource("1_bblbh")
 
 [node name="option_button" type="Button" parent="."]
-offset_left = 896.0
-offset_top = 448.0
-offset_right = 966.0
-offset_bottom = 479.0
+offset_left = 1316.0
+offset_top = 452.0
+offset_right = 1386.0
+offset_bottom = 483.0
 text = "Options"
+
+[node name="controls_button" type="Button" parent="."]
+offset_left = 530.0
+offset_top = 453.0
+offset_right = 600.0
+offset_bottom = 484.0
+text = "Controls
+"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.439049, 0.439049, 0.439049, 1)
+
+[node name="light_1" type="Area2D" parent="."]
+script = ExtResource("6_rug6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="light_1"]
+position = Vector2(577.5, 538.5)
+shape = SubResource("RectangleShape2D_d66dw")
+
+[node name="PointLight2D" type="PointLight2D" parent="light_1"]
+position = Vector2(578, 180)
+rotation = 1.5708
+scale = Vector2(4, 4)
+enabled = false
+shadow_enabled = true
+texture = SubResource("CompressedTexture2D_u3h2x")
+offset = Vector2(80, 2)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="light_1/PointLight2D"]
+position = Vector2(18.5, 0)
+rotation = -1.5708
+texture = ExtResource("2_hmep5")
+
+[node name="light_2" type="Area2D" parent="."]
+script = ExtResource("6_ovme8")
+
+[node name="PointLight2D2" type="PointLight2D" parent="light_2"]
+position = Vector2(954, 181)
+rotation = 1.5708
+scale = Vector2(4, 4)
+enabled = false
+shadow_enabled = true
+texture = ExtResource("3_sdhm7")
+offset = Vector2(80, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="light_2/PointLight2D2"]
+position = Vector2(18.5, 0)
+rotation = -1.5708
+texture = ExtResource("2_hmep5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="light_2"]
+position = Vector2(951, 542)
+shape = SubResource("RectangleShape2D_d66dw")
+
+[node name="light_3" type="Area2D" parent="."]
+script = ExtResource("8_1o7u8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="light_3"]
+position = Vector2(1330, 538)
+shape = SubResource("RectangleShape2D_d66dw")
+
+[node name="PointLight2D3" type="PointLight2D" parent="light_3"]
+position = Vector2(1350, 182)
+rotation = 1.5708
+scale = Vector2(4, 4)
+enabled = false
+shadow_enabled = true
+texture = SubResource("CompressedTexture2D_u3h2x")
+offset = Vector2(80, 2)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="light_3/PointLight2D3"]
+position = Vector2(18.5, 0)
+rotation = -1.5708
+texture = ExtResource("2_hmep5")
 
 [connection signal="button_down" from="play_button" to="play_button" method="_on_button_down"]
 [connection signal="button_up" from="play_button" to="play_button" method="_on_button_up"]
 [connection signal="pressed" from="play_button" to="play_button" method="_on_pressed"]
+[connection signal="mouse_entered" from="light_1" to="light_1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="light_1" to="light_1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="light_2" to="light_2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="light_2" to="light_2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="light_3" to="light_3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="light_3" to="light_3" method="_on_mouse_exited"]
