@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=4 uid="uid://5hmsq15bi6cr"]
+[gd_scene load_steps=17 format=4 uid="uid://5hmsq15bi6cr"]
 
 [ext_resource type="Script" path="res://scripts/play_button.gd" id="1_bblbh"]
 [ext_resource type="Texture2D" uid="uid://r4bk3d4cy885" path="res://sprites/wood floor.png" id="1_hhl17"]
 [ext_resource type="Texture2D" uid="uid://c5bhwasgsdqkh" path="res://sprites/stone-wall-from-bricks-rock-game-background-in-cartoon-style-seamless-textured-surface-ui-game-asset-road-or-floor-material-illustration-vector.jpg" id="1_nh30b"]
-[ext_resource type="Texture2D" uid="uid://b341yvir5bp07" path="res://sprite_0.png" id="2_hmep5"]
+[ext_resource type="Texture2D" uid="uid://b341yvir5bp07" path="res://sprites/sprite_0.png" id="2_hmep5"]
 [ext_resource type="Texture2D" uid="uid://bt8008wkv6cv0" path="res://sprites/godot_cone_test.png" id="3_sdhm7"]
+[ext_resource type="Script" path="res://scripts/option_button.gd" id="4_5ooet"]
+[ext_resource type="Texture2D" uid="uid://doflj4nb88wpk" path="res://sprites/icon.svg" id="5_dgju2"]
+[ext_resource type="Texture2D" uid="uid://4do0310pobk" path="res://sprites/image-removebg-preview (5).png" id="6_nyi41"]
 [ext_resource type="Script" path="res://scripts/light_2.gd" id="6_ovme8"]
 [ext_resource type="Script" path="res://scripts/light_1.gd" id="6_rug6b"]
+[ext_resource type="Script" path="res://scripts/controls_button.gd" id="7_84j60"]
 [ext_resource type="Script" path="res://scripts/light_3.gd" id="8_1o7u8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1y4k"]
@@ -19,7 +23,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_g1y4k")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d66dw"]
-size = Vector2(425, 1097)
+size = Vector2(449.5, 1097)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u3h2x"]
 load_path = "res://.godot/imported/godot_cone_test.png-6842e21dd63d3416f342d96cb3eb4c1f.ctex"
@@ -61,6 +65,28 @@ offset_top = 452.0
 offset_right = 1386.0
 offset_bottom = 483.0
 text = "Options"
+script = ExtResource("4_5ooet")
+
+[node name="godog_under_construction" type="Sprite2D" parent="option_button"]
+visible = false
+position = Vector2(47.815, 15.08)
+texture = ExtResource("5_dgju2")
+
+[node name="safety_hat" type="Sprite2D" parent="option_button"]
+visible = false
+position = Vector2(49.515, -49.425)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_nyi41")
+
+[node name="Label" type="Label" parent="option_button"]
+visible = false
+layout_mode = 0
+offset_left = -36.89
+offset_top = -160.045
+offset_right = 147.11
+offset_bottom = -111.045
+text = "I'm working on it
+(Come back next sprint)"
 
 [node name="controls_button" type="Button" parent="."]
 offset_left = 530.0
@@ -69,6 +95,28 @@ offset_right = 600.0
 offset_bottom = 484.0
 text = "Controls
 "
+script = ExtResource("7_84j60")
+
+[node name="godog_under_construction" type="Sprite2D" parent="controls_button"]
+visible = false
+position = Vector2(47.815, 15.08)
+texture = ExtResource("5_dgju2")
+
+[node name="Label" type="Label" parent="controls_button"]
+visible = false
+layout_mode = 0
+offset_left = -36.89
+offset_top = -160.045
+offset_right = 147.11
+offset_bottom = -111.045
+text = "I'm working on it
+(Come back next sprint)"
+
+[node name="safety_hat" type="Sprite2D" parent="controls_button"]
+visible = false
+position = Vector2(49.515, -49.425)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_nyi41")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.439049, 0.439049, 0.439049, 1)
@@ -113,7 +161,7 @@ rotation = -1.5708
 texture = ExtResource("2_hmep5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="light_2"]
-position = Vector2(951, 542)
+position = Vector2(959.25, 553)
 shape = SubResource("RectangleShape2D_d66dw")
 
 [node name="light_3" type="Area2D" parent="."]
@@ -141,6 +189,8 @@ texture = ExtResource("2_hmep5")
 [connection signal="button_down" from="play_button" to="play_button" method="_on_button_down"]
 [connection signal="button_up" from="play_button" to="play_button" method="_on_button_up"]
 [connection signal="pressed" from="play_button" to="play_button" method="_on_pressed"]
+[connection signal="pressed" from="option_button" to="option_button" method="_on_pressed"]
+[connection signal="pressed" from="controls_button" to="controls_button" method="_on_pressed"]
 [connection signal="mouse_entered" from="light_1" to="light_1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="light_1" to="light_1" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="light_2" to="light_2" method="_on_mouse_entered"]

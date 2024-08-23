@@ -1,34 +1,160 @@
-[gd_scene load_steps=10 format=3 uid="uid://8jsao202inq0"]
+[gd_scene load_steps=26 format=3 uid="uid://8jsao202inq0"]
 
 [ext_resource type="Script" path="res://scripts/godog.gd" id="1_6rqng"]
-[ext_resource type="Texture2D" uid="uid://doflj4nb88wpk" path="res://sprites/icon.svg" id="2_1ipto"]
 [ext_resource type="Texture2D" uid="uid://ktkthskc7y14" path="res://sprites/godot_light_orb.jpg" id="2_8acgi"]
+[ext_resource type="Texture2D" uid="uid://dicema3mfxtn6" path="res://sprites/2 Dog 2/Walk.png" id="2_g0id7"]
 [ext_resource type="Texture2D" uid="uid://daro2p6v8tl4l" path="res://sprites/image-removebg-preview (3).png" id="3_aptvq"]
 [ext_resource type="Script" path="res://scripts/godog_area.gd" id="3_myry5"]
+[ext_resource type="Texture2D" uid="uid://bbv4mhc7pu5ts" path="res://sprites/2 Dog 2/Idle.png" id="3_pbr3k"]
+[ext_resource type="Texture2D" uid="uid://bdbg1v3g30c5b" path="res://sprites/2 Dog 2/Death.png" id="4_kr1fq"]
 [ext_resource type="Texture2D" uid="uid://bt8008wkv6cv0" path="res://sprites/godot_cone_test.png" id="5_207pb"]
 [ext_resource type="Script" path="res://scripts/dog_swap_timer.gd" id="5_x0g4n"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_weguh"]
+atlas = ExtResource("2_g0id7")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a01p"]
+atlas = ExtResource("2_g0id7")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcimv"]
+atlas = ExtResource("2_g0id7")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8tyn"]
+atlas = ExtResource("2_g0id7")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0lxc"]
+atlas = ExtResource("4_kr1fq")
+region = Rect2(0, 8, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj6q2"]
+atlas = ExtResource("4_kr1fq")
+region = Rect2(48, 8, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raxyy"]
+atlas = ExtResource("4_kr1fq")
+region = Rect2(96, 8, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg6ot"]
+atlas = ExtResource("4_kr1fq")
+region = Rect2(144, 8, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctb4t"]
+atlas = ExtResource("4_kr1fq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r6ds"]
+atlas = ExtResource("3_pbr3k")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j06lv"]
+atlas = ExtResource("3_pbr3k")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkr2f"]
+atlas = ExtResource("3_pbr3k")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipo2y"]
+atlas = ExtResource("3_pbr3k")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oq6xa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weguh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a01p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcimv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8tyn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0lxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj6q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raxyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bg6ot")
+}],
+"loop": false,
+"name": &"dog_death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctb4t")
+}],
+"loop": false,
+"name": &"dog_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r6ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j06lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkr2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipo2y")
+}],
+"loop": true,
+"name": &"idle_dog",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h16vl"]
-size = Vector2(60, 60)
+size = Vector2(91, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84l28"]
-size = Vector2(72, 64)
+size = Vector2(95, 64)
 
 [node name="godog" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_6rqng")
+
+[node name="godog_animation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -42)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_oq6xa")
+animation = &"dog_jump"
+frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.2
 shadow_enabled = true
 texture = ExtResource("2_8acgi")
 texture_scale = 4.0
+metadata/_edit_lock_ = true
 
 [node name="flashlight" type="Node2D" parent="."]
 visible = false
 position = Vector2(0, -36)
 
 [node name="PointLight2D" type="PointLight2D" parent="flashlight"]
+texture_filter = 1
 position = Vector2(18, 0)
 scale = Vector2(3, 3)
 shadow_enabled = true
@@ -46,19 +172,16 @@ flip_h = true
 
 [node name="flashlight_timer" type="Timer" parent="flashlight"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.53674e-07, 9.53674e-07)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_1ipto")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
+position = Vector2(-7.5, 0)
 shape = SubResource("RectangleShape2D_h16vl")
 
 [node name="godog_area" type="Area2D" parent="."]
 script = ExtResource("3_myry5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="godog_area"]
+position = Vector2(-7.5, 0)
 shape = SubResource("RectangleShape2D_84l28")
 
 [node name="dog_swap_timer" type="Timer" parent="."]
@@ -76,7 +199,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.8
 
-[connection signal="flashlight" from="." to="flashlight" method="_on_godog_flashlight"]
 [connection signal="timeout" from="flashlight/flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
 [connection signal="timeout" from="dog_swap_timer" to="." method="_on_dog_swap_timer_timeout"]
 [connection signal="timeout" from="dog_swap_timer" to="dog_swap_timer" method="_on_timeout"]

@@ -1,14 +1,11 @@
 extends Node2D
 
 var respawn = false
+signal camera_limit
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if $player.position.y > 1500:
+		_respawn()
 	if respawn:
 		_respawn()
 
@@ -31,5 +28,7 @@ func _on_tutorial_spike_trap_respawn():
 
 func _respawn():
 	respawn = false
+	camera_limit.emit(-6272,0,"godog")
+	camera_limit.emit(-6272,0,"player")
 	$godog.position = $godog.godog_respawn_position
 	$player.position = $player.player_respawn_position

@@ -15,7 +15,7 @@ func _process(delta):
 
 
 func update_trajectory(dir: Vector2, speed: float, gravity: float, delta : float) -> void:
-	var max_points = 8 * godog_var.throw_power
+	var max_points = 8 * round(godog_var.throw_power)
 	var pos: Vector2 = Vector2.ZERO
 	var vel =  dir * speed
 	clear_points()

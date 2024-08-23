@@ -110,3 +110,8 @@ func _on_godog_throw_charge(power):
 	else:
 		$throw_power_label.text = str(round(power))
 #endregion
+
+
+func _on_camera_manager_player_camera_limit_y(cam_limit_top,cam_limit_bottom) -> void:
+	$player_camera.limit_top = cam_limit_top
+	$player_camera.limit_bottom = cam_limit_bottom

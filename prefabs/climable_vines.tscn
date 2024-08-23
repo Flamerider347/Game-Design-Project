@@ -1,16 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtkfojrv78snc"]
+[gd_scene load_steps=3 format=3 uid="uid://dtkfojrv78snc"]
 
 [ext_resource type="Script" path="res://scripts/climable_vines.gd" id="1_15fp7"]
-[ext_resource type="Texture2D" uid="uid://bw08024f83tsa" path="res://sprites/vine sprite.png" id="2_aj0fb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvog4"]
 size = Vector2(192, 600)
 
 [node name="climable_vines" type="Area2D"]
 script = ExtResource("1_15fp7")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_aj0fb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fvog4")

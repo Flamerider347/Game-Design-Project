@@ -6,13 +6,12 @@ var interact_timeout = true
 signal switch_timer
 signal flicked_on
 signal flicked_off
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if can_interact and Input.is_action_just_pressed("both_interact") and not flicked and interact_timeout:
+		$Label.text = "Once both the dog and 
+player is at the door
+press E to advance"
 		flicked = true
 		$switch_on.show()
 		$switch_off.hide()
@@ -20,6 +19,8 @@ func _process(_delta):
 		switch_timer.emit()
 		flicked_on.emit()
 	if can_interact and Input.is_action_just_pressed("both_interact") and flicked and interact_timeout:
+		$Label.text = "To unlock the door,
+flick the switch up there"
 		flicked = false
 		$switch_on.hide()
 		$switch_off.show()

@@ -27,15 +27,13 @@ signal swapped
 signal thrown
 signal camera_update
 signal throw_charge
-signal flashlight
 
 @onready var player_var = get_parent().get_node("player")
-
+@onready var godog_anim = $godog_animation
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 
 #endregion 
-
 func _physics_process(delta):
 	throwing()
 	swapping()
@@ -48,6 +46,8 @@ func _physics_process(delta):
 
 #region Movement, Respawning, Throwing & Camera 
 func moving(_delta):
+	if not Input.is_action_pressed("player_left") and not Input.is_action_pressed("player_right") and not is_thrown:
+		godog_anim.play("idle_dog")
 	if controlling:
 		if Input.is_action_just_released("player_flashlight"):
 			if not flashlight_enabled and flashlight_timer_timeout:
@@ -64,10 +64,14 @@ func moving(_delta):
 			velocity.y = JUMP_VELOCITY
 		if Input.is_action_pressed("player_left"):
 			position.x -= SPEED
+			godog_anim.flip_h = true
 			$flashlight.rotation_degrees = 180
+			godog_anim.play("default")
 		if Input.is_action_pressed("player_right"):
 			position.x += SPEED
 			$flashlight.rotation_degrees = 0
+			godog_anim.flip_h = false
+			godog_anim.play("default")
 		if can_climb:
 			if Input.is_action_pressed("player_jump"):
 				climbing = true
@@ -103,6 +107,7 @@ func throwing():
 		throw_power += charge_multiplier
 
 	if Input.is_action_just_released("player_throw") and charging:
+		godog_anim.play("dog_jump")
 		is_thrown = true
 		charging = false
 		position_update = false
@@ -140,9 +145,10 @@ func _on_player_pick_up(player_position, direction):
 	can_swap = false
 	if direction == 1:
 		position = Vector2(player_position.x+60, player_position.y+60)
+		$godog_animation.flip_h = false
 	if direction == -1:
 		position = Vector2(player_position.x-60, player_position.y+60)
-
+		$godog_animation.flip_h = true
 func _on_player_dropped():
 	position_update = false
 	apply_gravity = true
@@ -172,3 +178,8 @@ func _on_dog_swap_timer_timeout():
 
 func _on_flashlight_timer_timeout() -> void:
 	flashlight_timer_timeout = true
+
+
+func _on_camera_manager_godog_camera_limit_y(cam_limit_top, cam_limit_bottom) -> void:
+	$godog_camera.limit_top = cam_limit_top
+	$godog_camera.limit_bottom = cam_limit_bottom
