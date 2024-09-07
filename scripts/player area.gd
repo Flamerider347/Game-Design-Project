@@ -23,4 +23,3 @@ func _on_area_exited(area):
 	if area is godog_area:
 		can_interact = false
 		in_range.emit(can_interact)
-

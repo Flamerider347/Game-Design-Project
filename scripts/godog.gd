@@ -21,6 +21,7 @@ var can_climb = false
 var climbing = false
 var flashlight_enabled = false
 var flashlight_timer_timeout = true
+var godog_conveyor = false
 
 signal update_position
 signal swapped
@@ -34,18 +35,18 @@ signal throw_charge
 
 
 #endregion 
-func _physics_process(delta):
-	throwing()
+func _physics_process(delta: float) -> void:
+	flashlight()
+	throwing(delta)
 	swapping()
 	camera()
 	moving(delta)
-	respawning()
 	emit_position_update()
-	if Input.is_action_just_pressed("dog_debug"):
-		print("godog", controlling)
 
-#region Movement, Respawning, Throwing & Camera 
+#region Movement, Respawning, Throwing, Camera & Flashlight
 func moving(_delta):
+	if godog_conveyor and not player_var.picked_up:
+		position.x += 5
 	if not Input.is_action_pressed("player_left") and not Input.is_action_pressed("player_right") and not is_thrown:
 		godog_anim.play("idle_dog")
 	if controlling:
@@ -65,11 +66,9 @@ func moving(_delta):
 		if Input.is_action_pressed("player_left"):
 			position.x -= SPEED
 			godog_anim.flip_h = true
-			$flashlight.rotation_degrees = 180
 			godog_anim.play("default")
 		if Input.is_action_pressed("player_right"):
 			position.x += SPEED
-			$flashlight.rotation_degrees = 0
 			godog_anim.flip_h = false
 			godog_anim.play("default")
 		if can_climb:
@@ -83,21 +82,22 @@ func moving(_delta):
 		velocity.y += gravity * _delta
 	move_and_slide()
 	
+func _on_conveyer_belt_area_dog_moving(dog_moving) -> void:
+	godog_conveyor = dog_moving
 
 func _on_climable_vines_godog_can_climb(climbable):
 	can_climb = climbable
 	if not can_climb:
 		climbing = false
 
-func respawning():
-	if position.y >= 1500:
-		position = player_var.position
-
-func throwing():
+func throwing(_delta):
 	if charging:
 		throw_charge.emit(throw_power)
-
+	if is_on_floor():
+		throw_power = 0
 	if Input.is_action_pressed("player_throw") and player_var.picked_up:
+		if not charging:
+			throw_power = 20
 		controlling = false
 		charging = true
 		if throw_power > 100:
@@ -114,7 +114,6 @@ func throwing():
 		apply_gravity = true
 		can_swap = true
 		velocity = Vector2(side_force * throw_power * 0.7 * player_var.direction, -up_force * throw_power*0.9)
-		throw_power = 20
 		throw_charge.emit(0)
 		thrown.emit()
 
@@ -131,6 +130,19 @@ func _on_camera_manager_godog_camera_limit(limit_left, limit_right):
 	$godog_camera.limit_left = limit_left
 	$godog_camera.limit_right = limit_right
 
+func _on_camera_manager_godog_camera_limit_y(cam_limit_top, cam_limit_bottom) -> void:
+	$godog_camera.limit_top = cam_limit_top
+	$godog_camera.limit_bottom = cam_limit_bottom
+
+func _on_flashlight_timer_timeout() -> void:
+	flashlight_timer_timeout = true
+
+func flashlight():
+	if $godog_animation.flip_h == true:
+		$flashlight.rotation_degrees = 180
+	if $godog_animation.flip_h == false:
+		$flashlight.rotation_degrees = 0
+
 #endregion
 #region Picking up
 func emit_position_update():
@@ -144,10 +156,10 @@ func _on_player_pick_up(player_position, direction):
 	apply_gravity = false
 	can_swap = false
 	if direction == 1:
-		position = Vector2(player_position.x+60, player_position.y+60)
+		position = Vector2(player_position.x-20, player_position.y+60)
 		$godog_animation.flip_h = false
 	if direction == -1:
-		position = Vector2(player_position.x-60, player_position.y+60)
+		position = Vector2(player_position.x+20, player_position.y+60)
 		$godog_animation.flip_h = true
 func _on_player_dropped():
 	position_update = false
@@ -162,6 +174,7 @@ func swapping():
 		dog_swapped()
 
 func dog_swapped():
+	godog_anim.play("idle_dog")
 	controlling = false
 	can_swap = false
 	swapped.emit()
@@ -174,12 +187,3 @@ func _on_dog_swap_timer_timeout():
 	can_swap = true
 
 #endregion
-
-
-func _on_flashlight_timer_timeout() -> void:
-	flashlight_timer_timeout = true
-
-
-func _on_camera_manager_godog_camera_limit_y(cam_limit_top, cam_limit_bottom) -> void:
-	$godog_camera.limit_top = cam_limit_top
-	$godog_camera.limit_bottom = cam_limit_bottom

@@ -1,18 +1,9 @@
 extends Area2D
-
 var position_changing = false
-func _process(_delta):
-	if position_changing:
-		$firework_node.position = Vector2(randi_range(-7936,-6656),randi_range(-256,-64))
+var timer_going = false
+
 func _on_area_entered(_area):
-	position_changing = true
-	$firework_node/firework.emitting = true
 	$secret_wall_tilemap.visible = false
 	$godog.visible = true
 	$gojo.visible = true
 	$secret_text.visible = true
-
-
-func _on_area_exited(_area):
-	position_changing = false	
-	$firework_node/firework.emitting = false

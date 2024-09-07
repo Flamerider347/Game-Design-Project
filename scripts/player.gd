@@ -12,16 +12,16 @@ var picked_up = false
 var controlling = true
 var player_can_swap = true
 var can_climb = false
+var player_conveyor = false
 signal pick_up
 signal dropped
 signal swapped
 signal camera_update
 
+@onready var player_anim = $"player area/player_sprite"
 #endregion
 
-func _physics_process(delta):
-	if Input.is_action_just_pressed("player_debug"):
-		print("player", controlling)
+func _physics_process(delta: float) -> void:
 	camera()
 	moving(delta)
 	picking_up(delta)
@@ -29,6 +29,10 @@ func _physics_process(delta):
 
 #region Movement & Camera
 func moving(delta):
+	if player_conveyor:
+		position.x += 5
+	if not Input.is_action_pressed("player_left") and not Input.is_action_pressed("player_right") and is_on_floor():
+		player_anim.play("player_idle")
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if controlling:
@@ -37,13 +41,16 @@ func moving(delta):
 		if Input.is_action_pressed("player_left"):
 			position.x -= SPEED
 			direction = -1
-			$"player area/player sprite".flip_h = true
+			player_anim.play("player_run")
+			$"player area/player_sprite".flip_h = true
 		if Input.is_action_pressed("player_right"):
 			position.x += SPEED
 			direction = 1
-			$"player area/player sprite".flip_h = false
+			player_anim.play("player_run")
+			$"player area/player_sprite".flip_h = false
 		if can_climb:
 			if Input.is_action_pressed("player_jump"):
+				player_anim.play("player_climb")
 				position.y -= SPEED
 				velocity = Vector2.ZERO
 			else: 
@@ -87,6 +94,7 @@ func swapping():
 		player_swap()
 
 func player_swap():
+	player_anim.play("player_idle")
 	controlling = false
 	player_can_swap = false
 	swapped.emit()
@@ -115,3 +123,7 @@ func _on_godog_throw_charge(power):
 func _on_camera_manager_player_camera_limit_y(cam_limit_top,cam_limit_bottom) -> void:
 	$player_camera.limit_top = cam_limit_top
 	$player_camera.limit_bottom = cam_limit_bottom
+
+
+func _on_conveyer_belt_area_player_moving(player_moving) -> void:
+	player_conveyor = player_moving

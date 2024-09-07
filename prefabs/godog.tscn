@@ -1,7 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://8jsao202inq0"]
+[gd_scene load_steps=25 format=3 uid="uid://8jsao202inq0"]
 
 [ext_resource type="Script" path="res://scripts/godog.gd" id="1_6rqng"]
-[ext_resource type="Texture2D" uid="uid://ktkthskc7y14" path="res://sprites/godot_light_orb.jpg" id="2_8acgi"]
 [ext_resource type="Texture2D" uid="uid://dicema3mfxtn6" path="res://sprites/2 Dog 2/Walk.png" id="2_g0id7"]
 [ext_resource type="Texture2D" uid="uid://daro2p6v8tl4l" path="res://sprites/image-removebg-preview (3).png" id="3_aptvq"]
 [ext_resource type="Script" path="res://scripts/godog_area.gd" id="3_myry5"]
@@ -139,15 +138,7 @@ texture_filter = 1
 position = Vector2(0, -42)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_oq6xa")
-animation = &"dog_jump"
-frame_progress = 1.0
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.2
-shadow_enabled = true
-texture = ExtResource("2_8acgi")
-texture_scale = 4.0
-metadata/_edit_lock_ = true
+animation = &"idle_dog"
 
 [node name="flashlight" type="Node2D" parent="."]
 visible = false
@@ -181,7 +172,7 @@ shape = SubResource("RectangleShape2D_h16vl")
 script = ExtResource("3_myry5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="godog_area"]
-position = Vector2(-7.5, 0)
+position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_84l28")
 
 [node name="dog_swap_timer" type="Timer" parent="."]
@@ -191,7 +182,7 @@ script = ExtResource("5_x0g4n")
 enabled = false
 process_callback = 0
 limit_left = -6272
-limit_right = 0
+limit_right = -3456
 limit_bottom = 1088
 limit_smoothed = true
 position_smoothing_enabled = true

@@ -1,10 +1,10 @@
 res://prefabs/door_1.tscn::b72e2955e236c4af5da3a48a6a3d207a::1724377456::res://.godot/exported/133200997/export-fd7394aa8d91911d91ba3856c7d65207-door_1.scn
 res://prefabs/door_switch.tscn::dfa8614eabacd603939cd93ec3070ed6::1724377456::res://.godot/exported/133200997/export-1871423cfa6df37eb112ecd86576b3c5-door_switch.scn
 res://prefabs/enemy.tscn::0e2087f4752f79e2cb96e1844a6d667c::1724377456::res://.godot/exported/133200997/export-b4c9013847194aab24d7270e847c4f05-enemy.scn
-res://prefabs/game.tscn::6084e0e8d3172ae51c388be94d201361::1724379593::res://.godot/exported/133200997/export-cc00d9f0fba485915c777f03ce8d469a-game.scn
-res://prefabs/godog.tscn::3f40143b063b889d32f8e48624edba9b::1724379593::res://.godot/exported/133200997/export-26795deb925b18875b41993cf0ad877c-godog.scn
-res://prefabs/player.tscn::5e10ef7047a669c6650ca52a0a384b52::1724379593::res://.godot/exported/133200997/export-42edd82908ac9fd10409a12fa106efa9-player.scn
+res://prefabs/game.tscn::f0ad02680842b4a289cdfe61beb5078a::1724896227::res://.godot/exported/133200997/export-cc00d9f0fba485915c777f03ce8d469a-game.scn
+res://prefabs/godog.tscn::66ce5fed173e8fd92cd342becad90731::1724896227::res://.godot/exported/133200997/export-26795deb925b18875b41993cf0ad877c-godog.scn
+res://prefabs/player.tscn::fd83574fd87b63aac4d456f3658a9107::1724896227::res://.godot/exported/133200997/export-42edd82908ac9fd10409a12fa106efa9-player.scn
 res://prefabs/respawn_screen.tscn::ce1938114d4fd5ba28d76aaf3040137e::1722477697::res://.godot/exported/133200997/export-4cbaa0100b5daf7d824c35983c16602b-respawn_screen.scn
 res://prefabs/climable_vines.tscn::6f16fe4183a88b6f47aed3a5ac4cc803::1724377456::res://.godot/exported/133200997/export-edb6c035c45865585aa0ddc3ec55e57a-climable_vines.scn
-res://prefabs/firework_node.tscn::e6489f1a431e4e1aa4bf493191653503::1723686048::res://.godot/exported/133200997/export-0206514ee5e844f0372bbb199f502344-firework_node.scn
-res://prefabs/menu.tscn::45047878452af24d5f06a7cac871b082::1724379593::res://.godot/exported/133200997/export-2ca0524a4313dfa096e7d3499294d6b9-menu.scn
+res://prefabs/firework_node.tscn::0b386f39a336add855a52dc75e800573::1724380149::res://.godot/exported/133200997/export-0206514ee5e844f0372bbb199f502344-firework_node.scn
+res://prefabs/menu.tscn::d322ed117639867ffecb3649ff82bdcc::1724896226::res://.godot/exported/133200997/export-2ca0524a4313dfa096e7d3499294d6b9-menu.scn

@@ -1,28 +1,11 @@
 extends Area2D
 var speed = 2
-var helicopter = true
-var direction = 1
-var move = "down"
+
 signal respawn
 
 func _process(_delta):
-	if helicopter:
-		position.y += speed*direction
-		if position.y < 92:
-			direction = 1
-		if position.y > 930:
-			direction = -1
-	if not helicopter:
-		rotation_degrees = 0
-
-func _on_door_switch_flicked_on():
-	helicopter = false
-
-
-func _on_door_switch_flicked_off():
-	helicopter = true
-
+	$StaticBody2D2/Sprite2D.rotation_degrees += 8
 
 func _on_area_entered(area):
-	if area is player_main or godog and helicopter:
+	if area is player_main or godog:
 		respawn.emit()

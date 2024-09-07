@@ -1,21 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://baexsvxkribe6"]
+[gd_scene load_steps=5 format=3 uid="uid://baexsvxkribe6"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_vses8"]
-[ext_resource type="Texture2D" uid="uid://bcrbkp64t8spf" path="res://sprites/enemy_placeholder0.png" id="2_up8t6"]
+[ext_resource type="Texture2D" uid="uid://duify3k1drsnk" path="res://sprites/pixil-frame-0 (2).png" id="2_gq5hl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cotvq"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pru1y"]
+radius = 18.0069
 
 [node name="enemy" type="Area2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_vses8")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-texture = ExtResource("2_up8t6")
+texture_filter = 1
+texture = ExtResource("2_gq5hl")
+offset = Vector2(-2.5, -2.5)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-position = Vector2(-250, 0)
-polygon = PackedVector2Array(282, -32.0003, 282, 31.9997, 218, 31.9998, 218, -32.0002)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_cotvq")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-32, 31.9997, -32, -32.0003, 32.0001, -32.0002, 31.9999, 31.9998)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pru1y")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

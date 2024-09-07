@@ -1,22 +1,27 @@
 extends Area2D
 var locked = true
-var can_enter = false
+var can_enter_player = false
+var can_enter_godog = false
 
-signal level_2
+
+signal level_3
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if can_enter and not locked and Input.is_action_just_pressed("both_interact"):
-		level_2.emit()
+	if can_enter_player and can_enter_godog and not locked:
+		level_3.emit()
 
 
 func _on_area_entered(area):
-	if area is player_area and godog_area:
-		can_enter = true
-
+	if area is player_area:
+		can_enter_player = true
+	if area is godog_area:
+		can_enter_godog = true
 
 func _on_area_exited(area):
-	if area is player_area or godog_area:
-		can_enter = false
+	if area is player_area:
+		can_enter_player = false
+	if area is godog_area:
+		can_enter_godog = false
 
 
 func _on_door_switch_flicked_on():

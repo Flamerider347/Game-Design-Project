@@ -46,3 +46,10 @@ func _on_game_camera_limit(cam_limit_left,cam_limit_right,player_type) -> void:
 		godog_camera_limit.emit(cam_limit_left, cam_limit_right)
 	elif player_type == "player":
 		player_camera_limit.emit(cam_limit_left,cam_limit_right)
+
+
+func _on_game_camera_limit_y(cam_limit_top,cam_limit_bottom, player_type) -> void:
+	if player_type == "godog":
+		godog_camera_limit_y.emit(cam_limit_top, cam_limit_bottom)
+	elif player_type == "player":
+		player_camera_limit_y.emit(cam_limit_top,cam_limit_bottom)
