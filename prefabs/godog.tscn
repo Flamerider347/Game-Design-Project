@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://8jsao202inq0"]
+[gd_scene load_steps=26 format=3 uid="uid://8jsao202inq0"]
 
 [ext_resource type="Script" path="res://scripts/godog.gd" id="1_6rqng"]
 [ext_resource type="Texture2D" uid="uid://dicema3mfxtn6" path="res://sprites/2 Dog 2/Walk.png" id="2_g0id7"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://scripts/godog_area.gd" id="3_myry5"]
 [ext_resource type="Texture2D" uid="uid://bbv4mhc7pu5ts" path="res://sprites/2 Dog 2/Idle.png" id="3_pbr3k"]
 [ext_resource type="Texture2D" uid="uid://bdbg1v3g30c5b" path="res://sprites/2 Dog 2/Death.png" id="4_kr1fq"]
-[ext_resource type="Texture2D" uid="uid://bt8008wkv6cv0" path="res://sprites/godot_cone_test.png" id="5_207pb"]
+[ext_resource type="Texture2D" uid="uid://dkw627qv0j2lp" path="res://sprites/flashlight_texture_update.jpg" id="5_r81w2"]
 [ext_resource type="Script" path="res://scripts/dog_swap_timer.gd" id="5_x0g4n"]
+[ext_resource type="Texture2D" uid="uid://ktkthskc7y14" path="res://sprites/godot_light_orb.jpg" id="9_ua2bv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_weguh"]
 atlas = ExtResource("2_g0id7")
@@ -139,6 +140,7 @@ position = Vector2(0, -42)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_oq6xa")
 animation = &"idle_dog"
+frame_progress = 0.0659948
 
 [node name="flashlight" type="Node2D" parent="."]
 visible = false
@@ -147,12 +149,14 @@ position = Vector2(0, -36)
 [node name="PointLight2D" type="PointLight2D" parent="flashlight"]
 texture_filter = 1
 position = Vector2(18, 0)
+rotation = -1.5708
 scale = Vector2(3, 3)
+energy = 0.4
 shadow_enabled = true
 shadow_color = Color(0.624193, 0.195454, 0.0956287, 0)
 shadow_filter_smooth = 1.5
-texture = ExtResource("5_207pb")
-offset = Vector2(92, 2)
+texture = ExtResource("5_r81w2")
+offset = Vector2(-1.5, 162)
 
 [node name="Sprite2D2" type="Sprite2D" parent="flashlight"]
 position = Vector2(27, -5)
@@ -182,13 +186,19 @@ script = ExtResource("5_x0g4n")
 enabled = false
 process_callback = 0
 limit_left = -6272
+limit_top = 384
 limit_right = -3456
 limit_bottom = 1088
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_top_margin = 0.8
+drag_top_margin = 0.7
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.2
+texture = ExtResource("9_ua2bv")
+texture_scale = 1.5
 
 [connection signal="timeout" from="flashlight/flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
 [connection signal="timeout" from="dog_swap_timer" to="." method="_on_dog_swap_timer_timeout"]

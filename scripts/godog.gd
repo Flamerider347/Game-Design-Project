@@ -9,6 +9,7 @@ var throw_power = 20
 var side_force = 10
 var up_force = 10
 var gravity = 980
+var health = 100
 var is_disabled = true
 var position_update = false
 var is_thrown = false
@@ -156,10 +157,10 @@ func _on_player_pick_up(player_position, direction):
 	apply_gravity = false
 	can_swap = false
 	if direction == 1:
-		position = Vector2(player_position.x-20, player_position.y+60)
+		position = Vector2(player_position.x-20, player_position.y+45)
 		$godog_animation.flip_h = false
 	if direction == -1:
-		position = Vector2(player_position.x+20, player_position.y+60)
+		position = Vector2(player_position.x+20, player_position.y+45)
 		$godog_animation.flip_h = true
 func _on_player_dropped():
 	position_update = false

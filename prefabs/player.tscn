@@ -155,10 +155,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtjt1"]
-size = Vector2(92.7273, 146.364)
+size = Vector2(80.9091, 146.364)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vvpo"]
-size = Vector2(90, 144)
+size = Vector2(77.7273, 144)
 
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(1.1, 1.1)
@@ -170,13 +170,13 @@ script = ExtResource("2_rxgv4")
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="player area"]
 texture_filter = 1
-position = Vector2(0, -17)
 scale = Vector2(4.2, 4.2)
 sprite_frames = SubResource("SpriteFrames_38ngc")
 animation = &"player_idle"
+frame_progress = 0.532224
+offset = Vector2(0, -6.5)
 
 [node name="interaction area" type="CollisionShape2D" parent="player area"]
-position = Vector2(8.66977e-07, 12.2727)
 shape = SubResource("RectangleShape2D_rtjt1")
 
 [node name="swap_timer" type="Timer" parent="."]
@@ -201,7 +201,6 @@ offset_right = 91.0
 offset_bottom = -76.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_6vvpo")
 
 [connection signal="draw" from="." to="." method="_on_draw"]

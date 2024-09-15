@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name player_main
 const SPEED = 6
 const JUMP_VELOCITY = -500.0
+var health = 100
 var gravity = 980
 var interact_cooldown = 0
 @export var direction = 1

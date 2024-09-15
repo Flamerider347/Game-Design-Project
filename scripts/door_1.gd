@@ -9,6 +9,7 @@ signal level_3
 func _process(_delta):
 	if can_enter_player and can_enter_godog and not locked:
 		level_3.emit()
+		locked = true
 
 
 func _on_area_entered(area):

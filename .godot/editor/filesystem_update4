@@ -1,8 +1,11 @@
-res://prefabs/menu.tscn
-res://game.gdshader
 res://prefabs/game.tscn
+res://game.gdshader
+res://prefabs/menu.tscn
 res://prefabs/player.tscn
 res://prefabs/godog.tscn
 res://prefabs/drone_boss.tscn
 res://prefabs/enemy.tscn
-res://scripts/conveyer_belt_area.gd
+res://prefabs/door_1.tscn
+res://scripts/game.gd
+res://scripts/enemy.gd
+res://scripts/drone_boss.gd

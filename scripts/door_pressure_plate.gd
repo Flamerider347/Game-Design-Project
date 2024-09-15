@@ -7,12 +7,12 @@ func _process(_delta: float) -> void:
 	if stepped_on:
 		$Label.text = "Press X to 
 swap to player"
-		if door.position.y > -192:
+		if door.position.y > 667:
 			door.position.y -= 2
 	if not stepped_on:
 		$Label.text = "Get to the pressure plate
 to open the door"
-		if door.position.y < 0:
+		if door.position.y < 864:
 			door.position.y += 2
 func _on_area_entered(area: Area2D) -> void:
 	if area is godog_area:

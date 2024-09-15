@@ -206,12 +206,19 @@ animation = &"drone_death"
 
 [node name="move_timer" type="Timer" parent="."]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(3, 11.6667)
+[node name="laser_area" type="Area2D" parent="."]
+position = Vector2(0, 12)
+
+[node name="PointLight2D" type="PointLight2D" parent="laser_area"]
+position = Vector2(3, -0.3333)
 color = Color(0.980392, 0, 0, 1)
-shadow_enabled = true
+energy = 2.0
 texture = ExtResource("6_ex2xa")
 offset = Vector2(92, 2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="laser_area"]
+position = Vector2(0, -12.34)
+polygon = PackedVector2Array(1.66667, 12.0067, 95.6667, 40.6733, 95.6667, -18.3267)
 
 [node name="drone_area" type="Area2D" parent="."]
 
@@ -220,5 +227,6 @@ position = Vector2(-0.0833336, 2)
 shape = SubResource("RectangleShape2D_kr4uk")
 
 [connection signal="timeout" from="move_timer" to="." method="_on_move_timer_timeout"]
+[connection signal="area_entered" from="laser_area" to="." method="_on_laser_area_area_entered"]
 [connection signal="area_entered" from="drone_area" to="." method="_on_drone_area_area_entered"]
 [connection signal="body_entered" from="drone_area" to="." method="_on_drone_area_body_entered"]
